@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>運送方式與運費說明 - OIKOS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/header_footer.css">
+
+    <link rel="stylesheet" href="/css/terms.css">
+
+    <link rel="icon" href="/img/logo.png" type="image/png">
+
+    <style>
+        /* 表格樣式微調 */
+        .shipping-table th {
+            background-color: #f1f3f5;
+            color: #495057;
+            font-weight: 600;
+        }
+        .shipping-table td {
+            vertical-align: middle;
+        }
+        /* 運費強調色 */
+        .price-tag {
+            color: #dc3545; /* Bootstrap danger color for price */
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div id="header"></div> 
+
+    <main class="terms-wrapper">
+        <div class="terms-card">
+            <h2 class="terms-title">運送方式與運費</h2>
+            <p class="text-secondary mb-5 text-center">
+                OIKOS 提供「宅配到府」與「超商取貨」兩種配送方式，<br>
+                您可以根據您的需求選擇最便利的收件方式。
+            </p>
+
+            <section class="mb-5">
+                <h4 class="section-title">一、運費與配送天數一覽</h4>
+                
+                <div class="alert alert-success d-flex align-items-center mb-3" role="alert">
+                    <i class="bi bi-gift-fill me-2 fs-5"></i>
+                    <div>
+                        單筆訂單消費滿 <strong>NT$ 1,500</strong> 即可享有免運優惠！
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered shipping-table text-center">
+                        <thead>
+                            <tr>
+                                <th width="25%">運送方式</th>
+                                <th width="20%">運費</th>
+                                <th width="25%">預計配送天數</th>
+                                <th width="30%">備註</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <i class=" text-primary mb-1 d-block fs-4"></i>
+                                    宅配到府
+                                </td>
+                                <td class="price-tag">NT$ 100</td>
+                                <td>出貨後約 2-3 工作天</td>
+                                <td class="text-start small text-secondary">
+                                    由物流專員直接配送至指定地址。
+                                    <br>(週日不配送)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="text-success mb-1 d-block fs-4"></i>
+                                    超商取貨
+                                </td>
+                                <td class="price-tag">NT$ 65</td>
+                                <td>出貨後約 3-5 工作天</td>
+                                <td class="text-start small text-secondary">
+                                    配合 7-11、全家。<br>
+                                    需攜帶證件領取。
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-muted small text-end">* 配送天數不含例假日與國定假日。</p>
+            </section>
+
+            <section class="mb-5">
+                <h4 class="section-title"><i class="bi bi-truck"></i> 宅配到府說明</h4>
+                <ul class="text-secondary">
+                    <li><strong>配送範圍：</strong>台灣本島各地區。離島地區（澎湖、金門、馬祖）運費另計，且配送時間較長。</li>
+                    <li><strong>物流夥伴：</strong>我們與黑貓宅急便 / 新竹物流合作，確保商品安全抵達。</li>
+                    <li><strong>注意事項：</strong>請務必填寫白天可簽收的地址與保持電話暢通。若配送兩次無人回應，包裹將退回本公司，重新配送需自行負擔運費。</li>
+                </ul>
+            </section>
+
+            <section class="mb-5">
+                <h4 class="section-title"><i class="bi bi-bag"></i> 超商取貨說明</h4>
+                <div class="card bg-light border-0 p-3">
+                    <ul class="text-secondary mb-0">
+                        <li class="mb-2"><strong>支援通路：</strong>7-ELEVEN、全家便利商店。</li>
+                        <li class="mb-2"><strong>材積限制：</strong>因超商有包裹大小限制，若您購買商品數量較多（例如大型家具），系統可能會請您改選「宅配」或分開下單。</li>
+                        <li class="mb-2"><strong>取貨期限：</strong>商品抵達門市後，系統會發送簡訊通知，請於 <strong>7 日內</strong>前往領取。</li>
+                        <li class="text-danger"><strong>重要提醒：</strong>取貨時請務必攜帶與收件人姓名相符之<strong>身分證件</strong>（身分證、駕照、健保卡）供店員核對，若姓名不符將無法領取。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h4 class="section-title">四、出貨作業時間</h4>
+                <p class="text-secondary">
+                    週一至週五為我們的出貨工作日。
+                </p>
+                <ul class="text-secondary">
+                    <li><strong>現貨商品：</strong>下單後約 3 個工作天內完成出貨。</li>
+                    <li><strong>預購商品：</strong>依商品頁面標示之預計出貨日為準（通常為 7-20 個工作天）。</li>
+                    <li>若訂單中包含現貨與預購商品，將待商品全數到齊後一併寄出。</li>
+                </ul>
+            </section>
+
+            <div class="text-center mt-5">
+                <a href="/html/products.html" class="btn btn-primary px-4 me-2">繼續購物</a>
+                <a href="/html/contact.html" class="btn btn-outline-secondary px-4">聯絡客服</a>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/include.js"></script>
+</body>
+</html>

@@ -1,0 +1,638 @@
+:root {
+     --linen-50: #EFECE7;
+     --linen-100: #F2EFEC;
+     --linen-900: #3E3932;
+     --linen-600: #8C857B;
+ }
+
+ body {
+     font-family: 'Montserrat', 'Noto Sans TC', sans-serif;
+     background-color: var(--linen-50);
+     color: var(--linen-900);
+     display: flex;
+     flex-direction: column;
+     min-height: 100vh;
+ }
+
+ /* Fixed Header Container */
+ .fixed-header-wrapper {
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     z-index: 1030;
+     display: flex;
+     flex-direction: column;
+ }
+
+ /* Announcement Bar */
+ #announcement-bar {
+     background-color: var(--linen-900);
+     color: var(--linen-100);
+     font-size: 0.75rem;
+     /* 12px */
+     letter-spacing: 0.1em;
+     text-align: center;
+     overflow: hidden;
+     transition: all 0.4s ease-in-out;
+     /* Initial State */
+     height: 40px;
+     opacity: 1;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+
+ /* Collapsed State for Announcement Bar */
+ .scrolled #announcement-bar {
+     height: 0;
+     opacity: 0;
+     padding: 0;
+ }
+
+/* =========================================
+   1. 通用設定 (保持原樣，適用於所有頁面)
+   ========================================= */
+.navbar {
+    background-color: var(--linen-50); /* 其他頁面維持原本的米色 */
+    transition: all 0.3s ease-in-out;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+/* =========================================
+   2. 首頁專用覆寫 (只在 body 有 .is-home 時生效)
+   ========================================= */
+
+/* 狀態 A: 首頁置頂時 (透明背景) */
+body.is-home .navbar {
+    background-color: transparent !important; /* 強制透明 */
+    box-shadow: none; /* 去除陰影 */
+}
+
+/* 狀態 B: 首頁往下滑動後 (變回實色) */
+/* 當 JS 加上 .scrolled 類別時，讓背景變回來 */
+body.is-home .fixed-header-wrapper.scrolled .navbar {
+    background-color: rgba(249, 248, 246, 0.95) !important; /* 變回半透明米色 */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* (選用) 如果首頁大圖很深，置頂時文字要變白，滑動後變回深色 */
+
+body.is-home .fixed-header-wrapper:not(.scrolled) .nav-link,
+body.is-home .fixed-header-wrapper:not(.scrolled) .navbar-brand,
+body.is-home .fixed-header-wrapper:not(.scrolled) .icon-btn {
+    color: black !important;
+}
+
+
+ .scrolled .navbar {
+     padding-top: 16px;
+     padding-bottom: 16px;
+     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+
+     /* 這裡維持您原本設定的帶有透明度的米色，或者直接用 var(--linen-50) */
+     background-color: rgba(249, 248, 246, 0.98);
+     backdrop-filter: blur(8px);
+ }
+
+ /* Logo */
+ .navbar-brand {
+     font-family: 'Cormorant Garamond', 'Noto Serif TC', serif;
+     font-size: 2.25rem;
+     /* 36px */
+     font-weight: 700;
+     letter-spacing: 0.1em;
+     color: var(--linen-900);
+ }
+
+ /* Navigation Links (Center) */
+ .nav-link {
+     font-size: 1.125rem;
+     /* 18px */
+     font-weight: 600;
+     /* Bold */
+     color: var(--linen-900) !important;
+     letter-spacing: 0.05em;
+     margin: 0 1.5rem;
+     position: relative;
+     transition: color 0.3s;
+ }
+
+ .nav-link:hover {
+     color: var(--linen-600) !important;
+ }
+
+ /* Underline effect */
+ .nav-link::after {
+     content: '';
+     position: absolute;
+     width: 0;
+     height: 2px;
+     bottom: 0;
+     left: 0;
+     background-color: #BFB2A3;
+     transition: width 0.3s;
+     opacity: 0.5;
+ }
+
+ .nav-link:hover::after {
+     width: 100%;
+ }
+
+ /* Right Icons */
+ .icon-btn {
+     color: var(--linen-900);
+     text-decoration: none;
+     margin-left: 1.25rem;
+     transition: color 0.2s;
+     display: flex;
+     align-items: center;
+     cursor: pointer;
+ }
+
+ .icon-btn:hover {
+     color: var(--linen-600);
+ }
+
+ .icon-btn i {
+     font-size: 22px;
+     /* Adjusted size as requested */
+     -webkit-text-stroke: 0.3px var(--linen-900);
+ }
+
+ /* Search Drawer */
+ #search-drawer {
+    display: none;
+    background-color: var(--linen-50);
+    border-top: 1px solid rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    padding: 40px 0;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.03);
+ }
+
+ .search-input-wrapper {
+    background-color: var(--linen-100);
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    border-radius: 2px;
+    position: relative;
+ }
+
+ .search-input-wrapper input {
+    background: transparent;
+    border: none;
+    width: 100%;
+    font-size: 1.1rem;
+    color: var(--linen-900);
+    outline: none;
+ }
+
+ .search-input-wrapper input::placeholder {
+    color: #A09890;
+ }
+
+ .search-input-wrapper i {
+    font-size: 1.5rem;
+    color: #A09890;
+ }
+
+ .popular-searches {
+    margin-top: 16px;
+    font-size: 0.9rem;
+    color: var(--linen-600);
+ }
+
+ .popular-searches a {
+    color: var(--linen-600);
+    text-decoration: none;
+    margin-left: 8px;
+    transition: color 0.2s;
+ }
+
+ .popular-searches a:hover {
+     color: var(--linen-900);
+     text-decoration: underline;
+ }
+
+ /* 搜尋建議選單樣式 */
+#suggestion-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-top: none;
+    border-radius: 0 0 0.5rem 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    max-height: 300px;
+    overflow-y: auto;
+    display: none; /* 預設隱藏 */
+}
+
+/* 選單項目的樣式 */
+.suggestion-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestion-item:hover {
+    background-color: #f8f9fa;
+    color: #0d6efd; /* Bootstrap Primary Color */
+}
+
+ /* Mobile Menu */
+ .offcanvas {
+     background-color: var(--linen-50);
+ }
+
+ /* Adjust spacer for content */
+ .content-spacer {
+     height: 120px;
+ }
+
+ /* Footer Styles */
+ footer {
+     background-color: var(--linen-50);
+     padding-top: 80px;
+     padding-bottom: 40px;
+     border-top: 1px solid rgba(62, 57, 50, 0.08);
+     margin-top: auto;
+ }
+
+ footer h5 {
+     font-family: 'Cormorant Garamond', serif;
+     font-weight: 700;
+     font-size: 1.75rem;
+     margin-bottom: 1rem;
+     color: var(--linen-900);
+ }
+
+ footer h6 {
+     font-family: 'Montserrat', sans-serif;
+     font-weight: 600;
+     font-size: 1rem;
+     margin-bottom: 1.25rem;
+     letter-spacing: 0.05em;
+     color: var(--linen-900);
+ }
+
+ footer p {
+     color: var(--linen-600);
+     font-size: 0.95rem;
+     margin-bottom: 1.5rem;
+ }
+
+ footer ul li {
+     margin-bottom: 0.75rem;
+ }
+
+ footer ul li a {
+     color: var(--linen-900);
+     font-size: 0.95rem;
+     text-decoration: none;
+     transition: color 0.2s;
+     opacity: 0.8;
+ }
+
+ footer ul li a:hover {
+     color: var(--linen-600);
+     opacity: 1;
+ }
+
+ footer .social-icons a {
+     color: var(--linen-900);
+     margin-right: 1.25rem;
+     font-size: 1.3rem;
+     transition: color 0.2s;
+ }
+
+ footer .social-icons a:hover {
+     color: var(--linen-600);
+ }
+
+ footer .copyright {
+     margin-top: 60px;
+     padding-top: 20px;
+     border-top: 1px solid rgba(62, 57, 50, 0.08);
+     color: var(--linen-600);
+     font-size: 0.85rem;
+     text-align: center;
+ }
+
+ /* Back to Top Button */
+ #back-to-top {
+     position: fixed;
+     bottom: 30px;
+     right: 30px;
+     width: 48px;
+     height: 48px;
+     background-color: var(--linen-900);
+     color: var(--linen-50);
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     text-decoration: none;
+     z-index: 1040;
+     opacity: 0;
+     visibility: hidden;
+     transition: all 0.3s ease-in-out;
+     box-shadow: 0 4px 12px rgba(62, 57, 50, 0.15);
+     cursor: pointer;
+ }
+
+ #back-to-top.show {
+     opacity: 1;
+     visibility: visible;
+     transform: translateY(0);
+ }
+
+ #back-to-top:hover {
+     background-color: var(--linen-600);
+     transform: translateY(-4px);
+     color: #fff;
+ }
+
+ #back-to-top i {
+     font-size: 1.25rem;
+ }
+
+ /* 圓形頭像容器的樣式 */
+ .circle-avatar {
+     /* 覆蓋 icon-btn 的一些樣式，確保圖片能顯示 */
+     width: 40px !important;
+     /* 根據您的設計調整大小 */
+     height: 40px !important;
+     padding: 0 !important;
+     border-radius: 50%;
+     /* 關鍵：使容器變圓 */
+     overflow: hidden;
+     /* 確保內容不會溢出圓形邊界 */
+     display: flex;
+     /* 確保內容居中 */
+     align-items: center;
+     justify-content: center;
+     transition: none !important;
+     /* 避免繼承 icon-btn 影響圖片 */
+     border: 1px solid rgba(0, 0, 0, 0.1);
+     /* 可選：加個邊框 */
+ }
+
+ /* 圓形頭像內容的樣式（佔位符或實際圖片） */
+ .circle-avatar .avatar-placeholder {
+     width: 100%;
+     height: 100%;
+     /* 這裡可以替換成您實際的頭像圖片 */
+     /* background-image: url('placeholder-avatar.jpg'); */
+     /* 請替換為您的圖片路徑 */
+     background-size: cover;
+     background-position: center;
+     background-color: #ccc;
+     /* 如果沒有圖片時的背景色 */
+ }
+
+ div.swal2-container.swal2-top-end {
+        top: 70px !important; 
+    }
+
+    /* 讓 Toast 本身「不擋滑鼠」，點擊會直接穿透到底下的按鈕 */
+.my-toast-popup {
+    pointer-events: none !important; 
+    opacity: 0.9 !important; /* 稍微透明一點點，減少遮擋感 */
+}
+
+
+
+
+  .wishList-container{
+        position: fixed;
+        /* display: grid; */
+        width: 30rem;
+        height: 30rem;
+        right: 10px;
+        top: 100px;
+        z-index: 1000;
+        display: none;
+
+    }
+
+    .wishlist-content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: aqua;
+        overflow-y: auto;  /*超過滾動*/
+        max-height: 30rem;
+        display: grid;
+        /* grid-template-columns: 16rem 1fr 1fr;  */
+        grid-template-columns:10rem 8rem 5rem; 
+        grid-template-rows: repeat(4, 8rem) 8rem; /* 3列50px，第4列80px */
+        grid-auto-rows: 8rem; /* 4列以後都80px */
+        background: rgba(203, 176, 163, 0.9); /*括號內值順序 r,g,b,a */
+        border-radius: 10px 10px 0 0;
+        
+    }
+
+    .toWishList-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #BFB2A3; /*括號內值順序 r,g,b,a */
+        border-radius: 0 0 10px 10px ;
+        height: 5em;
+
+    }
+    .toWishList{
+        font-size: 18px;
+        background-color: #e5d8c8;
+        border: 1px solid #e6d8c3;
+        color: #4a3c2f;
+        font-weight: 600;
+        padding: .5rem 2rem;
+        border-radius:10px ;
+        transition: 0.2s;
+    }
+    .toWishList:hover{
+        cursor: pointer;
+        transform: scale(1.05);
+        color: rgb(229, 122, 40);
+
+    }
+
+
+    .wishlist-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+    border-radius: 4px;
+    border: 1px solid #eee;
+}
+/* 用於控制顯示的 class */
+.wishlist-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 340px; /* 稍微加寬以容納資訊 */
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(62, 57, 50, 0.1); /* 使用網站色系的陰影 */
+    z-index: 1050;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    font-family: 'Noto Sans TC', sans-serif; /* 統一字體 */
+    display: none; /* 預設隱藏 */
+}
+
+.wishlist-dropdown-menu.show {
+    display: block !important;
+}
+
+/* 標題區塊 */
+.wishlist-header {
+    background-color: #FAF0E6; /* 亞麻色背景 (參照 cart.css) */
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.wishlist-header h6 {
+    color: #4a4a4a;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+/* 商品列表容器 */
+.wishlist-items-container {
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+/* 單個商品項目 */
+.wishlist-item-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f2f2f2;
+    transition: background-color 0.2s;
+    text-decoration: none; /* 移除連結底線 */
+    color: inherit;
+}
+
+.wishlist-item-row:hover {
+    background-color: #fcfcfc;
+}
+
+/* 圖片容器 (參照 cart.css .product-img-container) */
+.wishlist-img-box {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    padding: 2px;
+    flex-shrink: 0;
+    margin-right: 12px;
+}
+
+.wishlist-img-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* 文字資訊 */
+.wishlist-info {
+    flex-grow: 1;
+    overflow: hidden; /* 防止文字溢出 */
+}
+
+.wishlist-name {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.wishlist-meta {
+    font-size: 0.8rem;
+    color: #8c8c8c; /* 參照 cart.css .product-specs */
+    margin-bottom: 2px;
+}
+
+.wishlist-price {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #8B7355; /* 古銅色 (參照 cart.css .summary-price 風格) */
+}
+
+/* 底部按鈕區 */
+.wishlist-footer {
+    padding: 12px;
+    border-top: 1px solid #eee;
+    background-color: #fff;
+    text-align: center;
+}
+
+.btn-view-all {
+    display: block;
+    width: 100%;
+    background-color: #3E3932; /* 深色按鈕 (var(--linen-900)) */
+    color: #fff;
+    padding: 8px 0;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.btn-view-all:hover {
+    background-color: #5A4636;
+    color: #fff;
+}
+
+/* =========================================
+   修正導覽列置中問題
+   ========================================= */
+
+/* 只在桌機版 (螢幕寬度 >= 992px) 生效 */
+@media (min-width: 992px) {
+    
+    /* 1. 讓 Navbar 成為定位基準點 */
+    .navbar {
+        position: relative;
+    }
+
+    /* 2. 強制將中間的導覽列 (#navbarNav) 絕對置中 */
+    #navbarNav {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        
+        /* 確保不會蓋住其他層級 */
+        z-index: 1; 
+        
+        /* 重置原本 Flex 的影響 */
+        width: auto; 
+        justify-content: center;
+    }
+}

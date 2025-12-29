@@ -1,0 +1,97 @@
+/* 以 index.css 為基底，調整了排版、顏色與字體風格 */
+
+body {
+    /* 保持 index.css 的字體設定 */
+    font-family: 'Noto Sans TC', sans-serif;
+    color: #333;
+    background-color: #f8f9fa; /* 輕微的淺灰色背景 */
+}
+
+.bind-card {
+    max-width: 1000px;
+    border: 1px solid #e5e7eb; /* 輕微的邊框 */
+}
+
+.title {
+    /* 模仿 index.css 中的 section-title 或 hero-title 氛圍 */
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #1f2937; /* Gray-800 */
+    font-size: 2rem;
+}
+
+.subtitle {
+    color: #6b7280; /* Gray-500 */
+    line-height: 1.6;
+}
+
+/* 帳號卡片 */
+.account-card,
+.existing-box {
+    background: #f9fafb; /* 淺灰背景 */
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    text-align: center;
+    transition: box-shadow 0.3s;
+}
+
+.account-card:hover,
+.existing-box:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 4px;
+}
+
+.email {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* 供應商標籤 */
+.provider-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: #e0f2fe; /* Light Blue */
+    color: #0b507b; /* Dark Blue Text */
+}
+
+/* 按鈕樣式 (使用 Bootstrap 內建按鈕即可，但微調) */
+.btn-primary {
+    background-color: #1f2937; /* 使用接近您網站主色的深灰 */
+    border-color: #1f2937;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #374151; /* 懸停時略深 */
+    border-color: #374151;
+}
+
+/* 箭頭樣式 (手機版隱藏，桌面版顯示) */
+@media (min-width: 992px) {
+    .arrow {
+        min-width: 50px;
+        text-align: center;
+    }
+}

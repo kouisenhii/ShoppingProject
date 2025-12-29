@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OIKOS 後台管理系統</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+
+
+</head>
+
+<body>
+
+    <!-- Overlay for Mobile -->
+    <div class="overlay" id="sidebarOverlay"></div>
+
+    <!-- Mobile Header -->
+    <div class="mobile-header bg-white border-bottom p-3 align-items-center justify-content-between sticky-top">
+        <h1 class="h5 mb-0 font-serif fw-bold">OIKOS</h1>
+        <button class="btn btn-link text-dark p-0" id="mobileMenuBtn">
+            <i class="bi bi-list fs-3"></i>
+        </button>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="brand-logo">
+            OIKOS
+        </div>
+        <div class="p-3 flex-grow-1 overflow-auto">
+            <nav class="nav flex-column gap-1">
+                <button class="nav-link active" data-view="dashboard">
+                    <i class="bi bi-speedometer2"></i> 營運總覽
+                </button>
+                <button class="nav-link" data-view="products">
+                    <i class="bi bi-bag"></i> 商品管理
+                </button>
+                <button class="nav-link" data-view="orders">
+                    <i class="bi bi-cart"></i> 訂單管理
+                </button>
+                <button class="nav-link" data-view="users">
+                    <i class="bi bi-people"></i> 會員管理
+                </button>
+                <button class="nav-link" data-view="settings">
+                    <i class="bi bi-gear"></i> 系統設定
+                </button>
+            </nav>
+        </div>
+
+        <!-- User Profile & Logout -->
+        <div class="p-3 border-top bg-light bg-opacity-25">
+            <div class="d-flex align-items-center mb-3 px-2 py-1">
+                <div class="position-relative">
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=4F46E5&color=fff&bold=true"
+                        class="rounded-circle shadow-sm" width="40" height="40" alt="Admin">
+                    <span
+                        class="position-absolute bottom-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle">
+                        <span class="visually-hidden">Online</span>
+                    </span>
+                </div>
+                <div class="ms-3 overflow-hidden">
+                    <div class="fw-bold text-dark lh-1 text-truncate" style="font-size: 0.9rem;">Admin</div>
+                    <div class="text-secondary small mt-1 text-truncate" style="font-size: 0.75rem;">管理員</div>
+                </div>
+            </div>
+            <button
+                class="nav-link text-danger hover-bg-danger-light d-flex align-items-center justify-content-center border border-danger-subtle bg-white rounded-2 py-2 shadow-sm"
+                onclick="window.location.href='/index.html'">
+                <i class="bi bi-box-arrow-right me-2"></i> 登出系統
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- DASHBOARD VIEW -->
+        <div id="view-dashboard" class="view-section active">
+            <div class="mb-4">
+                <h2 class="fw-bold text-dark">營運總覽</h2>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="row g-4 mb-4">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="custom-card d-flex justify-content-between align-items-start">
+                        <div>
+                            <p class="text-secondary small fw-medium mb-1">總銷售額</p>
+                            <h3 class="fw-bold mb-0" id="stat-sales">NT$ 0</h3>
+                            <div class="mt-3 d-flex align-items-center">
+                                <span class="text-success small fw-medium">+12.5%</span>
+                                <span class="text-secondary small ms-2">較上月</span>
+                            </div>
+                        </div>
+                        <div class="stat-icon-wrapper bg-blue-50 text-blue-600">
+                            <i class="bi bi-currency-dollar fs-4"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="custom-card d-flex justify-content-between align-items-start">
+                        <div>
+                            <p class="text-secondary small fw-medium mb-1">總訂單數</p>
+                            <h3 class="fw-bold mb-0" id="stat-orders">0</h3>
+                            <div class="mt-3 d-flex align-items-center">
+                                <span class="text-success small fw-medium">+5.2%</span>
+                                <span class="text-secondary small ms-2">較上月</span>
+                            </div>
+                        </div>
+                        <div class="stat-icon-wrapper bg-green-50 text-green-600">
+                            <i class="bi bi-bag fs-4"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="custom-card d-flex justify-content-between align-items-start">
+                        <div>
+                            <p class="text-secondary small fw-medium mb-1">會員總數</p>
+                            <h3 class="fw-bold mb-0" id="stat-users">0</h3>
+                            <div class="mt-3 d-flex align-items-center">
+                                <span class="text-indigo-600 small fw-medium">+8.1%</span>
+                                <span class="text-secondary small ms-2">較上月</span>
+                            </div>
+                        </div>
+                        <div class="stat-icon-wrapper bg-indigo-50 text-indigo-600">
+                            <i class="bi bi-people fs-4"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="custom-card d-flex justify-content-between align-items-start">
+                        <div>
+                            <p class="text-secondary small fw-medium mb-1">平均客單價</p>
+                            <h3 class="fw-bold mb-0" id="stat-avg">NT$ 0</h3>
+                            <div class="mt-3 d-flex align-items-center">
+                                <span class="text-red-600 small fw-medium">-2.4%</span>
+                                <span class="text-secondary small ms-2">較上月</span>
+                            </div>
+                        </div>
+                        <div class="stat-icon-wrapper bg-orange-50 text-orange-600">
+                            <i class="bi bi-graph-up-arrow fs-4"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="row g-4 mb-4">
+                <div class="col-12 col-lg-8">
+                    <div class="custom-card">
+                        <h5 class="fw-bold mb-4">銷售趨勢分析</h5>
+                        <div style="height: 320px;">
+                            <canvas id="salesChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="custom-card">
+                        <h5 class="fw-bold mb-4">熱銷分類占比</h5>
+                        <div style="height: 250px;">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                        <div class="mt-4 row" id="category-legend">
+                            <!-- Legend Injected via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stock Alert -->
+            <div class="custom-card p-0 overflow-hidden">
+                <div class="p-4 border-bottom d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-exclamation-triangle-fill text-danger"></i>
+                        <h5 class="fw-bold mb-0">庫存預警</h5>
+                    </div>
+                    <span class="small text-secondary">庫存少於 15 件的商品</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="table mb-0 align-middle">
+                        <thead>
+                            <tr>
+                                <th class="ps-4">商品名稱</th>
+                                <th>規格</th>
+                                <th>價格</th>
+                                <th>庫存量</th>
+                                <th>狀態</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stock-alert-body">
+                            <!-- Injected via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUCTS VIEW -->
+        <div id="view-products" class="view-section">
+            <div class="d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
+                <h2 class="fw-bold text-dark mb-0 text-nowrap">商品管理</h2>
+
+                <div class="d-flex flex-wrap gap-2 flex-grow-1 justify-content-xl-end">
+                    <!-- Search -->
+                    <div class="position-relative flex-grow-1 flex-xl-grow-0" style="min-width: 200px;">
+                        <i
+                            class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+                        <input type="text" class="form-control ps-5 bg-white" id="product-search"
+                            placeholder="搜尋商品名稱...">
+                    </div>
+                    <!-- Category -->
+                    <div class="position-relative flex-grow-1 flex-xl-grow-0" style="min-width: 150px;">
+                        <i class="bi bi-funnel position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"
+                            style="z-index: 5;"></i>
+
+                        <button class="form-select ps-5 bg-white text-start" type="button" id="categoryDropdownBtn"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            全部分類
+                        </button>
+
+                        <ul class="dropdown-menu w-100 shadow-sm" id="category-dropdown-list"
+                            style="max-height: 300px; overflow-y: auto;">
+                        </ul>
+
+                        <input type="hidden" id="product-category-filter" value="ALL">
+                    </div>
+                    <!-- Sort -->
+                    <div class="position-relative flex-grow-1 flex-xl-grow-0" style="min-width: 180px;">
+                        <i
+                            class="bi bi-arrow-down-up position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+                        <div class="position-relative flex-grow-1 flex-xl-grow-0" style="min-width: 180px;">
+                            <i class="bi bi-arrow-down-up position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"
+                                style="z-index: 5;"></i>
+                            <button class="form-select ps-5 bg-white text-start" type="button"
+                                data-bs-toggle="dropdown">最新上架</button>
+                            <ul class="dropdown-menu w-100 shadow-sm">
+                                <li><a class="dropdown-item" href="#" data-val="NEWEST">最新上架</a></li>
+                                <li><a class="dropdown-item" href="#" data-val="PRICE_ASC">價格 (低 → 高)</a></li>
+                                <li><a class="dropdown-item" href="#" data-val="PRICE_DESC">價格 (高 → 低)</a></li>
+                                <li><a class="dropdown-item" href="#" data-val="STOCK_ASC">庫存 (低 → 高)</a></li>
+                                <li><a class="dropdown-item" href="#" data-val="STOCK_DESC">庫存 (高 → 低)</a></li>
+                            </ul>
+                            <input type="hidden" id="product-sort" value="NEWEST">
+                        </div>
+                    </div>
+                    <!-- Add Button -->
+                    <button
+                        class="btn btn-primary-custom d-flex align-items-center gap-2 px-3 py-2 rounded-3 text-nowrap"
+                        data-bs-toggle="modal" data-bs-target="#addProductModal">
+                        <i class="bi bi-plus-lg"></i> <span class="d-none d-sm-inline">新增商品</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Table -->
+            <div class="custom-card p-0 overflow-hidden">
+                <div class="table-responsive">
+                    <table class="table mb-0 align-middle table-hover">
+                        <thead>
+                            <tr>
+                                <th class="ps-4">商品資訊</th>
+                                <th>分類</th>
+                                <th>價格</th>
+                                <th>庫存</th>
+                                <th>規格</th>
+                                <th class="text-end pe-4">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-table-body">
+                            <!-- Injected -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="p-3 border-top d-flex justify-content-between align-items-center" id="product-pagination">
+                    <span class="text-secondary small" id="page-info">顯示第 0 - 0 筆，共 0 筆</span>
+                    <nav>
+                        <ul class="pagination pagination-sm mb-0 justify-content-end" id="pagination-ul">
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- ORDERS VIEW -->
+        <div id="view-orders" class="view-section">
+            <div class="d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
+                <h2 class="fw-bold text-dark mb-0 text-nowrap">訂單管理</h2>
+
+                <div class="d-flex flex-wrap gap-2 flex-grow-1 justify-content-xl-end">
+                    <!-- Search -->
+                    <div class="position-relative flex-grow-1 flex-xl-grow-0" style="min-width: 200px;">
+                        <i
+                            class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+                        <input type="text" class="form-control ps-5 bg-white" id="order-search" placeholder="搜尋訂單編號...">
+                    </div>
+                    <!-- Status Filter -->
+                    <div class="position-relative flex-grow-1 flex-xl-grow-0" style="min-width: 150px;">
+                        <i
+                            class="bi bi-funnel position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+                        <div class="position-relative flex-grow-1 flex-xl-grow-0" style="min-width: 150px;">
+                            <i class="bi bi-funnel position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"
+                                style="z-index: 5;"></i>
+                            <button class="form-select ps-5 bg-white text-start" type="button"
+                                data-bs-toggle="dropdown">全部狀態</button>
+                            <ul class="dropdown-menu w-100 shadow-sm">
+                                <li><a class="dropdown-item" href="#" data-val="ALL">全部狀態</a></li>
+                                <li><a class="dropdown-item" href="#" data-val="0">處理中</a></li>
+                                <li><a class="dropdown-item" href="#" data-val="1">運送中</a></li>
+                                <li><a class="dropdown-item" href="#" data-val="2">已送達</a></li>
+                                <li><a class="dropdown-item" href="#" data-val="3">已完成</a></li>
+                            </ul>
+                            <input type="hidden" id="order-status-filter" value="ALL">
+                        </div>
+                    </div>
+                    <!-- Sort -->
+                    <div class="position-relative flex-grow-1 flex-xl-grow-0" style="min-width: 200px;">
+                        <i
+                            class="bi bi-arrow-down-up position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+                        <div class="position-relative flex-grow-1 flex-xl-grow-0" style="min-width: 200px;">
+                            <i class="bi bi-arrow-down-up position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"
+                                style="z-index: 5;"></i>
+                            <button class="form-select ps-5 bg-white text-start" type="button"
+                                data-bs-toggle="dropdown">訂購時間 (新 → 舊)</button>
+                            <ul class="dropdown-menu w-100 shadow-sm">
+                                <li><a class="dropdown-item" href="#" data-val="DATE_DESC">訂購時間 (新 → 舊)</a></li>
+                                <li><a class="dropdown-item" href="#" data-val="DATE_ASC">訂購時間 (舊 → 新)</a></li>
+                                <li><a class="dropdown-item" href="#" data-val="AMOUNT_DESC">金額 (高 → 低)</a></li>
+                                <li><a class="dropdown-item" href="#" data-val="AMOUNT_ASC">金額 (低 → 高)</a></li>
+                            </ul>
+                            <input type="hidden" id="order-sort" value="DATE_DESC">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-card p-0 overflow-hidden">
+                <div class="table-responsive">
+                    <table class="table mb-0 align-middle table-hover">
+                        <thead>
+                            <tr>
+                                <th class="ps-4">訂單編號</th>
+                                <th>訂購時間</th>
+                                <th>會員 ID</th>
+                                <th>總金額</th>
+                                <th>付款狀態</th>
+                                <th>訂單狀態</th>
+                                <th class="text-end pe-4">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="order-table-body">
+                            <!-- Injected -->
+                        </tbody>
+                    </table>
+                    <div class="p-3 border-top d-flex justify-content-between align-items-center" id="order-pagination">
+                        <span class="text-secondary small" id="order-page-info">顯示第 0 - 0 筆，共 0 筆</span>
+                        <nav>
+                            <ul class="pagination pagination-sm mb-0 justify-content-end" id="order-pagination-ul">
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- USERS VIEW -->
+        <div id="view-users" class="view-section">
+            <div class="d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-4">
+                <h2 class="fw-bold text-dark mb-0 text-nowrap">會員管理</h2>
+
+                <div class="d-flex flex-wrap gap-2 flex-grow-1 justify-content-xl-end">
+                    <!-- Search -->
+                    <div class="position-relative flex-grow-1 flex-xl-grow-0" style="min-width: 250px;">
+                        <i
+                            class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+                        <input type="text" class="form-control ps-5 bg-white" id="user-search"
+                            placeholder="搜尋姓名、Email 或電話...">
+                    </div>
+                    <!-- Verified Filter -->
+                    <div class="position-relative flex-grow-1 flex-xl-grow-0" style="min-width: 150px;">
+                        <i
+                            class="bi bi-funnel position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+                        <div class="position-relative flex-grow-1 flex-xl-grow-0" style="min-width: 150px;">
+                            <i class="bi bi-funnel position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"
+                                style="z-index: 5;"></i>
+                            <button class="form-select ps-5 bg-white text-start" type="button"
+                                data-bs-toggle="dropdown">全部狀態</button>
+                            <ul class="dropdown-menu w-100 shadow-sm">
+                                <li><a class="dropdown-item" href="#" data-val="ALL">全部狀態</a></li>
+                                <li><a class="dropdown-item" href="#" data-val="VERIFIED">已驗證</a></li>
+                                <li><a class="dropdown-item" href="#" data-val="UNVERIFIED">未驗證</a></li>
+                            </ul>
+                            <input type="hidden" id="user-verified-filter" value="ALL">
+                        </div>
+                    </div>
+                    <!-- Sort -->
+                    <div class="position-relative flex-grow-1 flex-xl-grow-0" style="min-width: 200px;">
+                        <i
+                            class="bi bi-arrow-down-up position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+                        <div class="position-relative flex-grow-1 flex-xl-grow-0" style="min-width: 200px;">
+                            <i class="bi bi-arrow-down-up position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"
+                                style="z-index: 5;"></i>
+                            <button class="form-select ps-5 bg-white text-start" type="button"
+                                data-bs-toggle="dropdown">註冊日期 (新 → 舊)</button>
+                            <ul class="dropdown-menu w-100 shadow-sm">
+                                <li><a class="dropdown-item" href="#" data-val="JOIN_DATE_DESC">註冊日期 (新 → 舊)</a></li>
+                                <li><a class="dropdown-item" href="#" data-val="JOIN_DATE_ASC">註冊日期 (舊 → 新)</a></li>
+
+                                <li><a class="dropdown-item" href="#" data-val="NAME_ASC">姓名 (筆畫少 → 多)</a></li>
+                                <li><a class="dropdown-item" href="#" data-val="NAME_DESC">姓名 (筆畫多 → 少)</a></li>
+                            </ul>
+                            <input type="hidden" id="user-sort" value="JOIN_DATE_DESC">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-card p-0 overflow-hidden">
+                <div class="table-responsive">
+                    <table class="table mb-0 align-middle table-hover">
+                        <thead>
+                            <tr>
+                                <th class="ps-4">會員資訊</th>
+                                <th>聯絡方式</th>
+                                <th>地址</th>
+                                <th>性別 / 生日</th>
+                                <th>狀態</th>
+                                <th>註冊日期</th>
+                                <th class="text-end pe-4">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-table-body">
+                            <!-- Injected -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- SYSTEM SETTINGS VIEW -->
+        <div id="view-settings" class="view-section">
+            <h2 class="fw-bold text-dark mb-4">系統設定</h2>
+
+            <div class="row g-4">
+                <!-- Store Info -->
+                <div class="col-12 col-lg-6">
+                    <div class="custom-card h-100">
+                        <div class="d-flex align-items-center gap-2 mb-4">
+                            <i class="bi bi-shop text-primary fs-4"></i>
+                            <h5 class="fw-bold mb-0">商店基本資訊</h5>
+                        </div>
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label small text-secondary">商店名稱</label>
+                                <input type="text" class="form-control bg-white" value="OIKOS 家具生活館">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small text-secondary">聯絡電話</label>
+                                <input type="text" class="form-control bg-white" value="02-2345-6789">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small text-secondary">聯絡地址</label>
+                                <input type="text" class="form-control bg-white" value="台北市信義區信義路五段7號">
+                            </div>
+                            <button type="button" class="btn btn-primary-custom w-100 mt-2">儲存變更</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- System Status -->
+                <div class="col-12 col-lg-6">
+                    <div class="custom-card h-100">
+                        <div class="d-flex align-items-center gap-2 mb-4">
+                            <i class="bi bi-hdd-rack text-primary fs-4"></i>
+                            <h5 class="fw-bold mb-0">系統狀態</h5>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                            <span class="text-secondary">系統版本</span>
+                            <span class="fw-medium">v1.2.0 (Build 20240325)</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                            <span class="text-secondary">資料庫狀態</span>
+                            <span class="badge bg-success-subtle text-success-emphasis rounded-pill">正常運作</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                            <span class="text-secondary">伺服器負載</span>
+                            <span class="fw-medium">12%</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center py-2">
+                            <span class="text-secondary">上次備份時間</span>
+                            <span class="fw-medium">2024-03-25 03:00:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification Settings -->
+                <div class="col-12">
+                    <div class="custom-card">
+                        <div class="d-flex align-items-center gap-2 mb-4">
+                            <i class="bi bi-bell text-primary fs-4"></i>
+                            <h5 class="fw-bold mb-0">通知與功能開關</h5>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center py-3 border-bottom">
+                            <div>
+                                <div class="fw-medium">新訂單通知</div>
+                                <div class="small text-secondary">當有新訂單建立時發送 Email 通知</div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" checked>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center py-3 border-bottom">
+                            <div>
+                                <div class="fw-medium">庫存預警通知</div>
+                                <div class="small text-secondary">當商品庫存低於安全水位時顯示警示</div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" checked>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center py-3">
+                            <div>
+                                <div class="fw-medium">系統維護模式</div>
+                                <div class="small text-secondary">開啟後前台將顯示維護中頁面</div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Activity -->
+                <div class="col-12">
+                    <div class="custom-card p-0 overflow-hidden">
+                        <div class="p-4 border-bottom d-flex align-items-center gap-2">
+                            <i class="bi bi-shield-check text-primary fs-4"></i>
+                            <h5 class="fw-bold mb-0">管理員操作紀錄</h5>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table mb-0 align-middle">
+                                <thead>
+                                    <tr>
+                                        <th class="ps-4">操作人員</th>
+                                        <th>操作項目</th>
+                                        <th>IP 位址</th>
+                                        <th>時間</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="ps-4 fw-medium">Admin</td>
+                                        <td>修改商品 #101 價格</td>
+                                        <td class="text-secondary small">192.168.1.1</td>
+                                        <td class="text-secondary small">2024-03-25 10:30:22</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-4 fw-medium">Admin</td>
+                                        <td>匯出銷售報表</td>
+                                        <td class="text-secondary small">192.168.1.1</td>
+                                        <td class="text-secondary small">2024-03-24 15:45:10</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-4 fw-medium">System</td>
+                                        <td>自動備份完成</td>
+                                        <td class="text-secondary small">Localhost</td>
+                                        <td class="text-secondary small">2024-03-24 03:00:00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Add Product Modal -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h5 class="modal-title fw-bold">新增商品</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addProductForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label small text-secondary">商品名稱 <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control bg-white" id="new-pname"
+                                    placeholder="範例：北歐風沙發 (文字)" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-secondary">價格 <span
+                                        class="text-danger">*</span></label>
+                                <input type="number" class="form-control bg-white" id="new-price"
+                                    placeholder="範例：15800 (數字)" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label small text-secondary">圖片網址</label>
+                                <input type="text" class="form-control bg-white" id="new-image"
+                                    placeholder="範例：https://example.com/image.jpg (網址字串)">
+                                <div class="form-text small text-muted">建議使用公開可存取的圖片連結 (如 imgur)</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label small text-secondary">顏色</label>
+                                <input type="text" class="form-control bg-white" id="new-color"
+                                    placeholder="範例：米白色 (文字)">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-secondary">規格</label>
+                                <input type="text" class="form-control bg-white" id="new-spec"
+                                    placeholder="範例：200x90cm (文字)">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-secondary">庫存</label>
+                                <input type="number" class="form-control bg-white" id="new-stock"
+                                    placeholder="範例：20 (數字)">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-secondary">分類</label>
+                                <select class="form-select bg-white" id="new-category">
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small text-secondary">商品描述</label>
+                                <textarea class="form-control bg-white" id="new-desc" rows="4"
+                                    placeholder="請輸入詳細的商品介紹文字..."></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-top-0">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary-custom" id="saveProductBtn">儲存商品</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+
+</html>

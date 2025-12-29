@@ -1,0 +1,302 @@
+        body {
+            background-color: #ffffff;
+            font-family: "Noto Sans TC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #5a5a5a; /* 較柔和的深灰色 */
+            margin-top: 120px;
+            padding-bottom: 60px;
+        }
+
+        /* 頁面標題 */
+        .page-title {
+            text-align: center;
+            font-weight: 700;
+            color: #4a4a4a;
+            margin-bottom: 40px;
+            font-size: 1.75rem;
+            letter-spacing: 2px;
+        }
+
+        /* 亞麻色主題標題列 (主色調 #FAF0E6) */
+        .table thead th {
+            background-color: #FAF0E6 !important; 
+            color: #4a4a4a !important; /* 淺色背景需搭配深色文字 */
+            font-weight: 600;
+            padding: 18px;
+            border-bottom: none;
+            border-top: none;
+            text-align: center;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* 表格本體樣式 */
+        .table {
+            --bs-table-bg: transparent;
+            vertical-align: middle;
+        }
+
+        .table tbody tr {
+            border-bottom: 1px solid #f2f2f2;
+        }
+
+        .table tbody td {
+            padding: 24px 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        /* 圖片樣式 */
+        .product-img-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #f0f0f0;
+        }
+
+        .product-img-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-name {
+            font-weight: 500;
+            font-size: 1.05rem;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .product-specs {
+            font-size: 0.85rem;
+            color: #8c8c8c;
+            font-weight: 400;
+        }
+
+        .product-price {
+            font-weight: 600;
+            color: #555;
+        }
+
+        /* 數量控制器 - 方形邊框樣式 */
+        .qty-control {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid #e0e0e0;
+            border-radius: 2px;
+        }
+
+        .btn-qty {
+            background: #fff;
+            border: none;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #666;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-qty:hover {
+            background-color: #FAF0E6; /* 懸停時也使用亞麻色 */
+            color: #333;
+        }
+
+        .qty-input {
+            width: 40px;
+            height: 36px;
+            border: none;
+            border-left: 1px solid #e0e0e0;
+            border-right: 1px solid #e0e0e0;
+            text-align: center;
+            font-weight: 500;
+            color: #333;
+            outline: none;
+            background: #fff;
+            cursor: default;
+        }
+
+        /* 刪除按鈕 */
+        .btn-remove {
+            border: none;
+            background: transparent;
+            color: #9f9f9f;
+            transition: color 0.2s;
+            font-size: 1.2rem; /* Slightly larger for X icon */
+        }
+
+        .btn-remove:hover {
+            color: #dc3545;
+        }
+
+        /* 全新總計區塊樣式 */
+        .cart-summary-container {
+            background-color: #FAF0E6; /* 亞麻色背景 */
+            padding: 40px;
+            margin-top: 0px; 
+            border-radius: 4px;
+        }
+
+        /* 運送方式區塊樣式 */
+        .shipping-section {
+            width: 100%;
+            text-align: left;
+        }
+
+        .shipping-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .shipping-subtitle {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .shipping-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 20px 10px;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.2s;
+            min-height: 160px;
+            position: relative;
+        }
+
+        .shipping-card:hover {
+            border-color: #bbb;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .shipping-card.active {
+            border: 2px solid #000; /* 選中時為黑色粗邊框 */
+            background-color: #fff;
+        }
+
+        .shipping-icon {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            color: #555;
+            display: block;
+        }
+
+        .shipping-name {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        .shipping-desc {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .shipping-price {
+            margin-top: 8px;
+            font-weight: 700;
+            color: #333;
+            font-size: 1.05rem;
+        }
+
+        /* 底部結帳資訊右對齊容器 */
+        .summary-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: flex-end;
+            width: 100%;
+            height: 100%;
+        }
+
+        .summary-text-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-bottom: 5px;
+            color: #4a4a4a;
+            font-size: 1.05rem;
+            font-weight: 500;
+            flex-wrap: wrap;
+        }
+
+        .summary-price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #8B7355; /* 古銅色/深卡其色 */
+            line-height: 1;
+        }
+
+        .summary-note {
+            font-size: 0.9rem;
+            color: #8B7355; /* 古銅色/深卡其色 */
+            margin-bottom: 25px;
+            width: 100%;
+            text-align: right;
+            font-weight: 400;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+        }
+
+        .btn-continue {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            color: #4a4a4a;
+            padding: 12px 24px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.2s;
+            border-radius: 4px;
+        }
+
+        .btn-continue:hover {
+            background-color: #f8f8f8;
+            border-color: #999;
+            color: #333;
+        }
+
+        .btn-next-step {
+            background-color: #8B7355; /* 古銅色/深卡其色 */
+            color: #fff;
+            border: none;
+            padding: 12px 36px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+            border-radius: 4px;
+        }
+
+        .btn-next-step:hover {
+            background-color: #6d5a41; /* 深一點的古銅色 */
+            color: #fff;
+        }

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OIKOS | 裝潢靈感</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="/css/header_footer.css">
+    <style>
+      body {
+        font-family: 'Noto Sans TC', sans-serif;
+        background-color: #ffffff;
+        color: #555555;
+        overflow-x: hidden;
+      }
+
+      /* Typography */
+      h1 {
+        color: #2c2c2c;
+        font-size: 2.5rem;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        margin-bottom: 2rem;
+      }
+
+      @media (min-width: 768px) {
+        h1 {
+          font-size: 2.75rem;
+        }
+      }
+
+      p {
+        font-size: 15px;
+        line-height: 2.1;
+        font-weight: 300;
+        letter-spacing: 0.05em;
+        margin-bottom: 2.5rem;
+        text-align: justify;
+      }
+
+      @media (min-width: 768px) {
+        p {
+          font-size: 16px;
+        }
+      }
+
+      .text-small-caps {
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #999;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .inspiration-title {
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: #333;
+        letter-spacing: 0.05em;
+      }
+
+      /* Image Styles */
+      .img-wrapper {
+        position: relative;
+        width: 100%;
+        padding-top: 125%; /* 4:5 Aspect Ratio for portrait feel */
+        background-color: #f0f0f0;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+      }
+
+      @media (min-width: 992px) {
+         .img-wrapper {
+            padding-top: 80%; /* 5:4 Aspect Ratio for desktop cards */
+         }
+      }
+
+      .img-wrapper img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+
+      .inspiration-card {
+        cursor: pointer;
+      }
+
+      .inspiration-card:hover .img-wrapper img {
+        transform: scale(1.08);
+      }
+
+      .inspiration-card:hover .inspiration-title {
+        color: #000;
+      }
+
+      .img-overlay {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.02);
+        pointer-events: none;
+        z-index: 1;
+        transition: background-color 0.3s ease;
+      }
+      
+      .inspiration-card:hover .img-overlay {
+        background-color: rgba(0, 0, 0, 0);
+      }
+
+
+      
+      /* SVG Icon styling */
+      .icon-arrow-up {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* Layout Spacing matching original design */
+      .section-padding {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+      }
+      
+      @media (min-width: 992px) {
+        .section-padding {
+          padding-top: 6rem;
+          padding-bottom: 6rem;
+        }
+      }
+    </style>
+ <!-- SweetAlert2 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+  <body>
+     <div id="header"></div>
+    <main class="container-fluid" style="max-width: 1600px;">
+      <section class="section-padding px-3 px-md-5">
+        
+        <!-- Header Content -->
+        <div class="row mb-5">
+          <div class="col-lg-6">
+             <h1>裝潢靈感</h1>
+             <div class="content-text" style="max-width: 600px;">
+               <p>
+                 家，是生活風格的延伸。我們為您精選了一系列裝潢案例，從色彩搭配、材質對話到光影流動，希望能為您的居家規劃激發更多想像。每一個角落，都值得被溫柔對待。
+               </p>
+             </div>
+          </div>
+        </div>
+
+        <!-- Inspiration Gallery Grid -->
+        <div class="row g-4 g-lg-5">
+          
+          <!-- Item 1: Warm Living Room -->
+          <div class="col-md-6 col-lg-4">
+            <div class="inspiration-card">
+              <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1616137466211-f939a420be84?q=80&w=800&auto=format&fit=crop" alt="Beige warm living room">
+                <div class="img-overlay"></div>
+              </div>
+              <div class="mt-3">
+                <span class="text-small-caps">Living Space</span>
+                <h3 class="inspiration-title">暖調米色的溫柔包覆</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: Wood Dining -->
+          <div class="col-md-6 col-lg-4">
+            <div class="inspiration-card">
+              <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?q=80&w=800&auto=format&fit=crop" alt="Wooden dining area">
+                <div class="img-overlay"></div>
+              </div>
+              <div class="mt-3">
+                <span class="text-small-caps">Dining Room</span>
+                <h3 class="inspiration-title">原木與日光的共饗</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Bedroom -->
+          <div class="col-md-6 col-lg-4">
+            <div class="inspiration-card">
+              <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1595853035070-59a39fe84de3?q=80&w=800&auto=format&fit=crop" alt="Cozy minimal bedroom">
+                <div class="img-overlay"></div>
+              </div>
+              <div class="mt-3">
+                <span class="text-small-caps">Bedroom</span>
+                <h3 class="inspiration-title">靜謐的休憩時光</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4: Modern Minimal -->
+          <div class="col-md-6 col-lg-4">
+            <div class="inspiration-card">
+              <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=800&auto=format&fit=crop" alt="Clean modern living room">
+                <div class="img-overlay"></div>
+              </div>
+              <div class="mt-3">
+                <span class="text-small-caps">Living Space</span>
+                <h3 class="inspiration-title">現代極簡的留白美學</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 5: Details -->
+          <div class="col-md-6 col-lg-4">
+            <div class="inspiration-card">
+              <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop" alt="Home decor details">
+                <div class="img-overlay"></div>
+              </div>
+              <div class="mt-3">
+                <span class="text-small-caps">Decor Details</span>
+                <h3 class="inspiration-title">日常物件的細膩紋理</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 6: Reading Corner -->
+          <div class="col-md-6 col-lg-4">
+            <div class="inspiration-card">
+              <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&auto=format&fit=crop" alt="Reading chair corner">
+                <div class="img-overlay"></div>
+              </div>
+              <div class="mt-3">
+                <span class="text-small-caps">Corner</span>
+                <h3 class="inspiration-title">獨處的閱讀角落</h3>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+    </main>
+    <div id="footer"></div>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/include.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>商品頁面</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+		rel="stylesheet">
+
+	<!-- Icons -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+
+	<!-- Swiper CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+	<!-- css樣式 -->
+	<link rel="stylesheet" href="/css/header_footer.css">
+	<link rel="stylesheet" href="/css/product.css">
+
+	<!-- SweetAlert2 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+
+<body>
+	<div class="page-wrapper">
+
+		<!-- 由 include.js 載入 header -->
+		<div id="header"></div>
+
+
+		<main class="product-container my-5">
+
+			
+			<div class="row gy-5 gx-lg-5 gx-3">
+				
+				<!-- 左側圖片區(主圖清單) -->
+				<div id="product-images" class="product-image-gallery col-12 col-lg-6">
+					<nav aria-label="breadcrumb" class="mt-3">
+						<ol class="breadcrumb" id="dynamic-breadcrumb">
+								
+						</ol>
+					</nav>
+
+					<!-- 主圖輪播 -->
+					<div class="swiper productMainSwiper">
+						<div class="swiper-wrapper" id="mainImageList" data-image-type="main">
+							<div class="swiper-slide">
+								<div class="skeleton skeleton-img-placeholder"></div>
+							</div>
+							<!-- JS 會自動插入 <picture> -->
+						</div>
+
+						<!-- 左右箭頭 -->
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
+
+					<!-- 縮圖輪播 -->
+					<div class="swiper productThumbSwiper">
+						<div class="swiper-wrapper" id="thumbImageList" data-image-type="thumb">
+							<!-- JS 自動插入縮圖 -->
+						</div>
+					</div>
+				</div>
+
+
+				<!-- 右側商品資訊 -->
+				<section class="product-info col-12 col-lg-6">
+
+					<!-- Loading骨架 -->
+					<h1 class="product-title skeleton" id="product-name">載入中...</h1>
+					<p class="product-subtitle skeleton" id="product-subtitle">載入中...</p>
+					<p class="mb-3 text-warning" id="product-rating-summary"></p>
+					<p class="product-price skeleton" id="product-price">NT$000</p>
+
+
+
+					<!-- 規格 -->
+					<div class="product-option">
+						<label class="option-label">商品規格</label>
+						<div class="option-buttons" id="option-color">
+							<!-- JSON 動態生成規格按鈕 -->
+						</div>
+					</div>
+
+
+					<!-- 商品數量選擇 -->
+					<div class="product-quantity-stock">
+						<div class="product-quantity">
+							<label for="qty">數量</label><br />
+							<div class="quantity-wrapper">
+								<button class="qty-btn minus">-</button>
+								<input type="number" id="qty" min="1" value="1">
+								<button class="qty-btn plus">+</button>
+							</div>
+							<p class="stock" id="stock">庫存量</p>
+						</div>
+					</div>
+
+
+					<!-- "加入購物車/立即購買" 按鈕 -->
+					<div class="product-buttons-wrapper">
+						<div class="product-buttons">
+							<button id="add-to-cart" class="my-btn add-cart disabled-btn" disabled>加入購物車</button>
+							<button id="buy-now" class="my-btn buy-now">立即購買</button>
+						</div>
+					</div>
+
+				</section>
+			</div>
+		</main>
+
+
+
+
+		<!-- Tabs區塊 -->
+		<section class="product-tabs mt-5">
+			<div class="tab-header">
+				<button class="tab-btn active" data-tab="desc">商品描述</button>
+				<button class="tab-btn" data-tab="shipping">送貨及付款方式</button>
+				<button class="tab-btn" data-tab="review">顧客評價</button>
+			</div>
+
+			<div class="tab-content">
+				<div class="tab-pane active" id="desc">
+					<h3 class="text-center"></h3>
+					<div id="desc-list"></div>
+				</div>
+				<!-- 商品描述 -->
+				<div class="tab-pane" id="shipping">
+					<!-- 付款方式 -->
+				</div>
+
+				<div class="tab-pane" id="review">
+					<div id="review-list"></div>
+					<!-- 顧客評價 -->
+					<nav aria-label="Review navigation" class="mt-4">
+						<ul class="pagination justify-content-center" id="review-pagination">
+
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</section>
+
+		<!-- 推薦商品 -->
+		<section class="related-products my-5">
+			<hr />
+			<br />
+			<h3 class="text-center mb-4">你可能還會喜歡</h3>
+			
+			<div class="swiper-button-prev related-prev"></div>
+			<div class="swiper-button-next related-next"></div>
+
+			<!-- Swiper 容器 -->
+			<div class="swiper relatedSwiper">
+				<div class="swiper-wrapper" id="related-list">
+					<!-- JS 動態載入 -->
+				</div>
+
+			</div>
+		</section>
+
+
+
+		<!-- 由 include.js 載入 footer -->
+		<div id="footer"></div>
+	</div>
+	
+	<!-- JS載入 -->
+	<script src="/js/product.js"></script>
+	<script src="/js/include.js"></script>
+	
+	
+
+	
+
+</body>
+
+</html>

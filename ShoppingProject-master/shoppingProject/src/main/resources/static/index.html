@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OIKOS 家具購物網站</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/shoppingProject/src/main/resources/static/css/bootstrap.min.css"> -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- header_footer.cs js-->
+    <link rel="stylesheet" href="/css/header_footer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--  index.css index.js-->
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="icon" href="/favicon.ico">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/index.js"></script>
+    <!-- SweetAlert2 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body class="is-home">
+
+    <main>
+        <div id="header"></div>
+
+        <!-- 全版主視覺輪播 (Hero Carousel) -->
+        <div id="heroCarousel" class="carousel slide carousel-fade hero-carousel" data-bs-ride="carousel"
+            data-bs-interval="6000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="hero-slide">
+                        <div class="hero-bg"
+                            style="background-image: url('https://images.unsplash.com/photo-1567016432779-094069958ea5?q=80&w=2070&auto=format&fit=crop');">
+                        </div>
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <h1 class="hero-title">北歐日常的溫柔擁抱</h1>
+                            <p class="hero-subtitle">實踐 Hygge 生活哲學，以極致舒適的觸感，讓家成為心靈最暖的歸屬。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="hero-slide">
+                        <div class="hero-bg"
+                            style="background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop');">
+                        </div>
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <h1 class="hero-title">純粹自然的北歐寓所</h1>
+                            <p class="hero-subtitle">引入原木溫潤與大地色系，打造會呼吸的空間，回歸生活最質樸的模樣。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="carousel-item">
+                    <div class="hero-slide">
+                        <div class="hero-bg"
+                            style="background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=2000&auto=format&fit=crop');">
+                        </div>
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <h1 class="hero-title">柔和光影的居家美學</h1>
+                            <p class="hero-subtitle">融合現代工藝與簡約設計，將生活的質感，凝縮在每一個靜謐的午後。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 左右控制鍵 -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <main>
+            <!-- 關於我們區塊 -->
+            <section class="py-5 bg-white">
+                <div class="container py-lg-5">
+                    <div class="row align-items-center gx-5">
+                        <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0">
+                            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2000&auto=format&fit=crop"
+                                alt="Interior Design" class="about-img shadow-sm">
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <h2 class="section-title text-start ps-0 pt-0 pb-4">關於我們</h2>
+                            <div class="pe-lg-5">
+                                <p class="about-text">
+                                    我們相信，家不只是一個空間，更是心靈的棲息地。OIKOS 致力於捕捉生活中最純粹的舒適感，將自然的溫潤與光影的柔和，編織進每一件家具之中。
+                                </p>
+                                <p class="about-text">
+                                    摒棄繁複的裝飾，我們回歸材質本質的美好。從原木的紋理到織物的觸感，每一個細節都訴說著關於「陪伴」的故事。在這裡，家具不再是冰冷的物件，而是與您一同呼吸、承載生活記憶的溫柔夥伴。
+                                </p>
+                                <a href="#" class="about-link mt-3 d-inline-block">了解更多品牌故事</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!--TODO 實做 拉資料庫資料至前端頁面-->
+            <!-- 第二部分：本月主打 -->
+            <section>
+                <h2 class="section-title">本月主打</h2>
+
+                <div class="carousel-container">
+                    <button class="nav-btn nav-btn-left" id="prevBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m15 18-6-6 6-6" />
+                        </svg>
+                    </button>
+
+                    <div class="products-scroll no-scrollbar" id="productsList">
+                        <!-- JavaScript 將在此處渲染項目 -->
+                    </div>
+
+                    <button class="nav-btn nav-btn-right" id="nextBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+                    </button>
+
+                    <!-- 進度條 -->
+                    <div class="carousel-progress-track">
+                        <div id="progressBar" class="carousel-progress-bar"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 第二部分：推薦商品 -->
+            <section class="pb-5">
+                <h2 class="section-title">推薦商品</h2>
+                <div class="container">
+                    <div class="card border-0 rounded-0 overflow-hidden shadow-sm">
+                        <!-- 骨架屏容器 -->
+                        <div class="row g-0 featured-skeleton-container" id="featuredSkeleton">
+                            <div class="col-lg-6 bg-light" style="min-height: 400px;">
+                                <div class="skeleton w-100 h-100"></div>
+                            </div>
+                            <div class="col-lg-6 featured-bg-right">
+                                <div class="skeleton skeleton-img mb-4"
+                                    style="width: 80%; max-width: 300px; height: 250px; background: transparent;">
+                                    <div class="skeleton w-100 h-100 rounded-3"></div>
+                                </div>
+                                <div class="skeleton skeleton-line-sm mb-3"></div>
+                                <div class="skeleton skeleton-line-md mb-2"></div>
+                                <div class="skeleton skeleton-line-sm" style="width: 20%"></div>
+                            </div>
+                        </div>
+
+                        <!--TODO 實做 圖片熱點-->
+                        <!-- 實際內容容器（初始隱藏） -->
+                        <div class="row g-0 featured-section-container d-none" id="featuredContent">
+                            <!-- 左側：生活風格圖片 -->
+                            <div class="col-lg-6 position-relative bg-light" style="min-height: 400px;">
+                                <img id="featContextImg" src="" alt="Lifestyle"
+                                    class="w-100 h-100 object-fit-cover position-absolute">
+
+                                <div class="pulse-dot group" style="top: 85%; left: 80%;" data-bs-toggle="tooltip"
+                                    title="FÖRLUNDA 腳凳" data-product-name="FÖRLUNDA">
+                                    <div class="pulse-inner"></div>
+                                </div>
+
+                                <div class="pulse-dot group" style="top: 80%; left: 25%;" data-bs-toggle="tooltip"
+                                    title="DYVLINGE 旋轉休閒椅" data-product-name="DYVLINGE">
+                                    <div class="pulse-inner"></div>
+                                </div>
+
+                                <div class="pulse-dot group" style="top: 63%; left: 75%" data-bs-toggle="tooltip"
+                                    title="BÅRSLÖV 三人座沙發" data-product-name="BÅRSLÖV">
+                                    <div class="pulse-inner"></div>
+                                </div>
+                            </div>
+
+
+
+                            <!-- 右側：詳細資訊 -->
+                            <div class="col-lg-6 featured-bg-right">
+                                <div
+                                    class="position-relative w-100 d-flex justify-content-center align-items-center mb-4">
+                                    <button class="btn p-2 text-secondary border-0 opacity-50 hover-opacity-100"
+                                        id="featPrevBtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="m15 18-6-6 6-6" />
+                                        </svg>
+                                    </button>
+
+                                    <img id="featMainImg" src="" alt="Product" class="featured-img-main">
+
+                                    <button class="btn p-2 text-secondary border-0 opacity-50 hover-opacity-100"
+                                        id="featNextBtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="m9 18 6-6-6-6" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="text-center">
+                                    <div id="featBrand" class="featured-brand"></div>
+                                    <h2 id="featName" class="featured-title"></h2>
+                                    <p id="featPrice" class="featured-price"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--TODO 實做 拉產品分類至前端頁面-->
+            <!-- 第三部分：瀏覽產品系列 -->
+            <section class="pb-5">
+                <h2 class="section-title">瀏覽產品系列</h2>
+
+                <div class="carousel-container">
+                    <div class="products-scroll no-scrollbar" id="seriesList">
+                        <!-- Javascript 將在此渲染系列 -->
+                    </div>
+
+
+                </div>
+            </section>
+
+            <div id="footer"></div>
+        </main>
+
+        <!-- include header footer-->
+        <script src="/js/include.js"></script>
+        <!-- Bootstrap Bundle JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

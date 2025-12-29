@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>綠界導向測試頁面 (ECPay Redirect Test)</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding-top: 50px; }
+        #ecpayForm { display: none; }
+    </style>
+</head>
+<body>
+    <h1>正在導向綠界測試頁面...</h1>
+    <p>請稍候，如果您沒有自動跳轉，請檢查瀏覽器的控制台 (Console)。</p>
+
+    <form id="ecpayForm" method="post"></form>
+    
+    <script>
+        // 【核心步驟：貼上 Postman 的 JSON 回應！】
+        const ecpayJson = {
+  "MerchantTradeDate": "2025/11/28 13:47:48",
+"ReturnURL": "https://diacritical-dawne-detailedly.ngrok-free.dev/api/ecpay/callback",
+"MerchantID": "2000132",
+"TotalAmount": "500",
+"CheckMacValue": "1BDCA33DD6F696A1D39D993AB38AA167A226529A9A401F3FEF93451B70D63FE6",
+"MerchantTradeNo": "1001251128153333",
+"ChoosePayment": "Credit",
+"EncryptType": "1",
+"ItemName": "BESTÅ",
+"PaymentType": "aio",
+"EcpayApiUrl": "https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5",
+"TradeDesc": "家具購物網站訂單",
+"OrderResultURL": "https://diacritical-dawne-detailedly.ngrok-free.dev/order/payment-result"
+        };
+
+        const form = document.getElementById('ecpayForm');
+        
+        // 取得 API 網址並設定 form 的 action
+        const ecpayUrl = ecpayJson.EcpayApiUrl;
+        form.action = ecpayUrl;
+        
+        // 移除 API URL 屬性，因為它不是要提交給綠界的參數
+        delete ecpayJson.EcpayApiUrl; 
+
+        // 填充所有參數
+        for (const key in ecpayJson) {
+            if (ecpayJson.hasOwnProperty(key)) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = ecpayJson[key];
+                form.appendChild(input);
+            }
+        }
+
+        // 提交表單，導向綠界
+        window.onload = function() {
+            form.submit();
+            console.log("Form submitted to ECPay at: " + ecpayUrl);
+        };
+    </script>
+</body>
+</html>
+
+
+

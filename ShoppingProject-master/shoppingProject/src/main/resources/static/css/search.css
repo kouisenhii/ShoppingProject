@@ -1,0 +1,586 @@
+/* =========================================
+   1. 側邊欄 (Sidebar) - 莊重質感版
+   ========================================= */
+
+/* 側邊欄容器 */
+#filter {
+    width: 300px;
+    min-height: 100vh;      /* 確保高度夠長 */
+    position: relative;     /* 關鍵：讓按鈕可以根據它來定位 */
+    border-radius: 0 4px 4px 0; /* 稍微圓角就好，比較俐落 */
+    background-color: #f0d6be; /* 您原本的底色 */
+    color: #5a3209;
+    padding: 30px 20px;     /* 內部留白 */
+    transition: margin-left 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* 順暢的滑動效果 */
+    z-index: 999;           /* 確保在最上層 */
+    box-shadow: 4px 0 15px rgba(0,0,0,0.05);
+}
+
+/* 收合狀態 (隱藏到左邊) */
+#filter.active {
+    margin-left: -300px;
+}
+
+/* --- 收合按鈕 (智慧定位) --- */
+.collapsebtn {
+    position: absolute;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s ease; /* 按鈕移動也要有動畫 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    z-index: 1000;
+    
+    /* 預設狀態 (側邊欄打開時)：按鈕要在「裡面」靠右，才不會擋到隔壁商品 */
+    right: 15px; 
+    background-color: rgba(90, 50, 9, 0.1); /* 低調的半透明深色 */
+    color: #5a3209;
+    border-radius: 50%; /* 圓形比較優雅 */
+}
+
+.collapsebtn:hover {
+    background-color: #8B5A2B; /* Hover 變深棕色 */
+    color: #fff;
+}
+
+/* 當側邊欄收起時 (.active)，按鈕才要「跑出去」 */
+/* 注意：這需要配合 search.js 裡對 #collapse 也 toggle class="active" */
+#collapse.active {
+    right: -45px; /* 跑到側邊欄外面，變成標籤 */
+    background-color: #d69e68; /* 醒目的顏色 */
+    color: #fff;
+    border-radius: 0 8px 8px 0; /* 變成標籤形狀 */
+    box-shadow: 4px 0 6px rgba(0,0,0,0.1);
+}
+
+
+/* --- 分類標題 --- */
+.sidebar-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #3e2206; /* 更深的深褐色 */
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    letter-spacing: 1.5px; /* 增加字距，提升質感 */
+    text-transform: uppercase; /* (選用) 英文轉大寫看起來比較正式 */
+}
+
+/* --- 列表與選項 (莊重風格) --- */
+.sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-list li {
+    margin-bottom: 0; /* 移除間距，改用 border 分隔 */
+}
+
+.sidebar-list li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 12px;
+    color: #6c5a4b;
+    text-decoration: none;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(90, 50, 9, 0.08); /* 極細的分隔線 */
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent; /* 預留左側線條位置 */
+}
+
+/* 選項 Icon 微調 */
+.sidebar-list li a i {
+    margin-right: 10px;
+    font-size: 14px;
+    color: #a09080;
+    transition: 0.3s;
+    opacity: 0.7;
+}
+
+/* Hover 效果：沉穩的變色 */
+.sidebar-list li a:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: #3e2206;
+    padding-left: 18px; /* 輕微縮排 */
+}
+
+.sidebar-list li a:hover i {
+    color: #8B5A2B;
+    opacity: 1;
+}
+
+/* 選中狀態 (Checked)：高質感的白底 */
+.sidebar-list li a.checked {
+    background-color: #fff;
+    color: #8B5A2B; /* 主題棕色 */
+    font-weight: 600;
+    border-left: 3px solid #8B5A2B; /* 左側實線 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.sidebar-list li a.checked i {
+    color: #8B5A2B;
+    opacity: 1;
+}
+
+/* 數量標籤 (Count) */
+.sidebar-list .count {
+    font-size: 13px;
+    color: #999;
+    font-weight: 400;
+}
+
+
+/* --- 清除篩選按鈕 (配合莊重風格) --- */
+#reset-btn {
+    margin-top: 30px;
+    border: 1px solid #8B5A2B; /* 實線邊框 */
+    background-color: transparent;
+    color: #8B5A2B;
+    border-radius: 4px; /* 方形圓角，比較正式 */
+    padding: 10px 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+#reset-btn:hover {
+    background-color: #8B5A2B;
+    color: #fff;
+}
+
+
+/* =========================================
+   2. 價格拉桿 (Range Slider) 優化
+   ========================================= */
+.irs--round {
+    margin-top: 15px;
+    height: 50px;
+}
+
+.irs--round .irs-line {
+    background-color: #e0d0c0; /* 淺奶茶色軌道 */
+    top: 33px;
+    height: 6px; /* 稍微加粗 */
+}
+
+.irs--round .irs-bar {
+    background-color: #8B5A2B; /* 深棕色進度條 */
+    top: 33px;
+    height: 6px;
+}
+
+.irs--round .irs-handle {
+    background-color: #fff;
+    border: 3px solid #8B5A2B; /* 棕色邊框的圓球 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 20px;
+    height: 20px;
+    top: 26px;
+    cursor: pointer;
+}
+
+.irs--round .irs-handle:hover {
+    background-color: #8B5A2B; /* Hover時變實心 */
+}
+
+.irs--round .irs-from, 
+.irs--round .irs-to, 
+.irs--round .irs-single {
+    background-color: #d69e68; /* 橘棕色標籤 */
+    font-size: 13px;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.irs--round .irs-from:before, 
+.irs--round .irs-to:before, 
+.irs--round .irs-single:before {
+    border-top-color: #d69e68;
+}
+
+
+/* =========================================
+   3. 商品卡片與其他 (保留原本樣式)
+   ========================================= */
+
+/* cards的CSS */
+/* 卡片外框 */
+.product-box {
+    border: 1px solid transparent; /* 預留邊框位置 */
+    margin-bottom: 20px;
+    
+}
+
+.product-inner-box {
+    position: relative; /* 讓裡面的絕對定位元素以這裡為基準 */
+    border-radius: 12px;     /* 圓角 */
+    overflow: hidden;       /* 讓圖片跟著圓角切 */
+    transition: all 0.3s ease; /* 動畫 */
+    border: 1px solid transparent; /* 預留邊框位置 */
+    margin-bottom: 20px;
+    background: #fff; /* 確保有背景色 */
+    cursor: pointer;
+}
+
+/* Hover 效果：浮起來 + 陰影 */
+.product-inner-box:hover {
+    transform: translateY(-5px); /* 往上浮 */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08); /* 柔和的陰影 */
+    border-color: #e0d0c0; /* (選用) Hover 時加個淺淺的邊框色 */
+}
+
+.product-inner-box img {
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 33px 61px -29px rgb(0, 0, 0 / 26%);
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* 4. 文字資訊區塊 */
+.product-info {
+    padding: 15px; /* 增加內距，不要讓字貼邊 */
+    text-align: left; /* 建議置左，比較整齊 */
+}
+
+.product-name {
+    display: flex;
+    flex-direction: column; /* 讓文字垂直排列 */
+    align-items: flex-start; /* ★ 關鍵：強制靠左對齊 */
+    justify-content: center;
+    width: 100%; /* 佔滿寬度 */
+}
+
+/* 系列名稱 / 英文名 (小字) */
+.product-name h3 {
+    font-size: 13px;
+    color: #6a6767;
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+}
+
+/* 商品中文名稱 (大字) */
+.product-name p {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 8px;
+    /* 如果名字太長，強迫一行並顯示點點點 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 價格 */
+.product-price {
+    font-size: 18px;
+    color: #8B5A2B; /* 使用你的主色調 (棕色) */
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif; /* 數字用這個字體好看 */
+}
+
+/* 庫存0 已售完遮罩 */
+.sold-out-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.65); /* 白色半透明，數值 0.65 可自行調整透明度 */
+    display: flex;
+    justify-content: center; /* 水平置中 */
+    align-items: center;     /* 垂直置中 */
+    z-index: 5;              /* 確保蓋在圖片上面，但在愛心按鈕下面(如果愛心是6) */
+    cursor: not-allowed;     /* 滑鼠移上去變成禁止符號 */
+}
+
+/* 中間的文字框 */
+.sold-out-text {
+    background-color: #333;       /* 深灰底色 */
+    color: white;                 /* 白字 */
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;          /* 字距拉開比較有質感 */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+.product-inner-box .icons {
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    top: -3%;
+    transition: all 0.2s ease-in-out, transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    opacity: 0;
+}
+
+.product-inner-box .icons a {
+    color: #8B5A2B !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+/* 2. 滑鼠移到單顆 Icon 上時的效果 */
+.product-inner-box .icons a:hover {
+    /* 顏色反轉！背景變深棕色，圖示變白 */
+    background: #8B5A2B !important;
+    color: #fff !important;
+    
+    /* 讓按鈕稍微往上浮一點點，增加點擊慾望 */
+    transform: translateY(-3px);
+    
+    /* 加深陰影 */
+    box-shadow: 0 6px 12px rgba(139, 90, 43, 0.3);
+}
+
+.product-inner-box .onsale .badge {
+    background: #000;
+    font-size: 12px;
+    padding: 5px 14px;
+    top: 0px;
+    position: absolute;
+}
+
+.product-inner-box .onsale .badge:before {
+    border-width: 10px 0px 0px 10px;
+    border-color: transparent transparent transparent #000;
+    content: "";
+    position: absolute;
+    right: -8px;
+    width: 0;
+    bottom: 0;
+    border-style: solid;
+}
+
+.product-inner-box .onsale .badge::after {
+    border-width: 10px 8px 0 10px;
+    border-color: #000 transparent transparent;
+    content: "";
+    position: absolute;
+    right: -8px;
+    width: 0;
+    top: 0;
+    border-style: solid;
+}
+
+.product-box.is-hover .icons {
+    transform: rotateY(-3%);
+    top: 3%;
+    opacity: 1;
+}
+
+.cart-btn {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.2s ease-in-out, transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.cart-btn button {
+    color: #000 !important;
+    border: none;
+    transition: background-color 0.3s;
+    box-shadow: 0 6px 12px rgba(139, 90, 43, 0.3);
+}
+
+.cart-btn button:hover {
+    /* 顏色反轉！背景變深棕色，圖示變白 */
+    background: #8B5A2B !important;
+    color: #fff !important;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(139, 90, 43, 0.3);
+}
+
+.product-box.is-hover .cart-btn {
+    opacity: 1;
+}
+
+.product-name h3 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* 分頁按鈕樣式微調 */
+.pagination .page-link {
+    color: #5a3209;
+    /* 配合您的主題色 */
+    cursor: pointer;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #ec7f13;
+    /* 主題橘色 */
+    border-color: #ec7f13;
+    color: white;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #ccc;
+}
+
+/* =========================================
+   次導覽列 (Category Bar) 專用樣式
+   ========================================= */
+
+/* 外層容器：增加上下間距與背景 */
+.category-bar {
+    background-color: #fff;  /* 或是 #f8f7f6 配合你的背景色 */
+    padding: 15px 0;         /* 增加上下呼吸空間 */
+    margin-bottom: 20px;     /* 與下方內容隔開 */
+}
+
+/* 列表設定：確保沒有預設圓點 */
+.category-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+/* 連結樣式：基本文字設定 */
+.category-item a {
+    text-decoration: none;   /* 去除底線 */
+    color: #5a3209;          /* 使用你 filter 的深咖啡色 */
+    font-size: 18px;         /* 字體稍微加大 */
+    font-weight: 500;
+    padding: 8px 12px;       /* 增加點擊範圍 */
+    display: block;
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    border-bottom: 2px solid transparent; /* 預留底線空間避免跳動 */
+}
+
+/* 滑鼠移過去的效果 (Hover) */
+.category-item a:hover {
+    color: #ec7f13;          /* 使用你主題的橘色 */
+}
+
+/* 當前選中的分類 (Active) */
+/* 注意：JS 會把 active class 加在 li 上 */
+.category-item.active a {
+    color: #ec7f13;          /* 選中變橘色 */
+    font-weight: bold;       /* 加粗 */
+    border-bottom: 2px solid #ec7f13; /* 加上橘色底線 */
+}
+
+
+/* =========================================
+   4. 手機與平板專用修正 (Mobile Responsive)
+   ========================================= */
+@media (max-width: 991px) {
+    
+    /* 1. 側邊欄改為「浮動覆蓋」模式 */
+    #filter {
+        position: fixed; /* 固定在螢幕上，不佔據空間 */
+        top: 0;
+        left: 0;
+        height: 100vh;   /* 佔滿全高 */
+        z-index: 1050;   /* 確保蓋在所有內容上面 */
+        margin-left: 0;  /* 重置電腦版的 margin */
+        
+        /* 手機版預設邏輯：*/
+        transform: translateX(0); 
+        box-shadow: 5px 0 25px rgba(0,0,0,0.2); 
+        width: 280px; 
+        
+        /* ★★★ 修正重點：把這裡的 overflow: auto 拿掉！改為 visible ★★★ */
+        overflow: visible; 
+        display: flex; 
+        flex-direction: column;
+    }
+
+    /* 隱藏狀態 */
+    #filter.active {
+        margin-left: 0; /* 覆蓋電腦版的設定 */
+        transform: translateX(-100%); /* 往左推到螢幕外 */
+    }
+
+    /* 2. 收合按鈕 (手機版微調) */
+    .collapsebtn {
+        top: 80px; /* 避開上方 Header */
+        z-index: 1051; /* 確保按鈕層級夠高 */
+    }
+
+    /* 當側邊欄收起來時，按鈕要凸出來 */
+    #collapse.active {
+        right: -45px; /* 維持凸出設計 */
+        background-color: #d69e68;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
+
+    /* 當側邊欄打開時，按鈕回到側邊欄內 */
+    .collapsebtn:not(.active) {
+        right: 10px;
+        top: 15px;
+        width: 35px;
+        height: 35px;
+        background-color: transparent; 
+        color: #8B5A2B;
+        border: 1px solid #8B5A2B;
+    }
+
+    /* 3. ★★★ 新增：讓內部的 form 負責捲動，才不會切到外面的按鈕 ★★★ */
+    #filter form {
+        overflow-y: auto; /* 捲軸改加在這裡 */
+        height: 100%;     /* 佔滿高度 */
+        padding-bottom: 100px; /* 底部留白，避免被手機瀏覽器工具列擋住 */
+        width: 100%;
+    }
+
+    /* 4. 優化清除按鈕在手機上的點擊範圍 */
+    #reset-btn {
+        padding: 12px 0;
+        font-size: 16px; 
+    }
+}
+
+/* =========================================
+   5. 麵包屑導覽 (Breadcrumb)
+   ========================================= */
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.breadcrumb-item a {
+    color: #8B5A2B; /* 主題棕色 */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.breadcrumb-item a:hover {
+    color: #ec7f13; /* 橘色 */
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: #6c757d; /* 灰色 (不可點) */
+}
+
+/* 分隔符號 (Bootstrap 預設是斜線，我們改用箭頭) */
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+    color: #ccc;
+    font-family: Arial, sans-serif;
+}
+

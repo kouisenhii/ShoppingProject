@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot Debug (強制)",
+            "request": "launch",
+            "mainClass": "com.tw.shopping.main.ShoppingApplication",
+            "projectName": "shoppingProject"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ShoppingProjectApplication<shoppingProject>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.tw.shopping.ShoppingProjectApplication",
+            "projectName": "shoppingProject",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

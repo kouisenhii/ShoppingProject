@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>修改密碼 - OIKOS</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/MyCSS.css">
+  <link rel="stylesheet" href="/css/header_footer.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+<!-- background-color: #FAF0E6 -->
+</head>
+
+<body>
+  <div id="header"></div> 
+  
+<div class="mainDiv mt-4 mb-4">
+  <main id="main" >
+    <h2>密碼修改</h2>
+      <form method="post" class="row g-3 d-flex justify-content-center">
+        <div>
+          <label for="old_passwd">請輸入舊密碼:</label>
+          <input id="old_passwd" name="old_passwd" type="password" class="form-control" required>
+        </div>
+        <div>
+          <label for="new_passwd">請輸入新密碼:</label>
+          <input id="new_passwd" name="new_passwd" type="password" class="form-control" required>
+        </div>
+        <div >
+          <label for="new_passwd_again">請再次確認新密碼:</label>
+          <input id="new_passwd_again" name="new_passwd_again" type="password" class="form-control" required>
+        </div>
+        <!-- <div class="d-flex justify-content-center"> -->
+          <button class="btn-submit mt-4 ">確認送出</button>
+        <!-- </div> -->
+</div>
+<div id="footer"></div>
+<script src="/js/include.js"></script>
+<script src="/js/myjs.js"></script>
+
+</body>
+</html> 

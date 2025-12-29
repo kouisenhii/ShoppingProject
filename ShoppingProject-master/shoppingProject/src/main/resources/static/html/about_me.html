@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OIKOS | 關於我們</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+     <!-- SweetAlert2 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/header_footer.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+      body {
+        font-family: 'Noto Sans TC', sans-serif;
+        background-color: #ffffff;
+        color: #555555;
+        overflow-x: hidden;
+      }
+
+      /* Typography */
+      h1 {
+        margin-top: 50px;
+        color: #2c2c2c;
+        font-size: 2.5rem;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        margin-bottom: 3rem;
+      }
+
+      @media (min-width: 768px) {
+        h1 {
+          font-size: 2.75rem;
+        }
+      }
+
+      p {
+        font-size: 15px;
+        line-height: 2.1;
+        font-weight: 300;
+        letter-spacing: 0.05em;
+        margin-bottom: 2.5rem;
+        text-align: justify;
+      }
+
+      @media (min-width: 768px) {
+        p {
+          font-size: 16px;
+        }
+      }
+
+      /* Image Styles */
+      .img-wrapper {
+        position: relative;
+        width: 100%;
+        padding-top: 80%; /* 5:4 Aspect Ratio */
+        background-color: #f0f0f0;
+        overflow: hidden;
+      }
+
+      .img-wrapper img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* transition: transform 0.7s ease; */
+      }
+
+
+      .img-overlay {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(255, 247, 237, 0.05);
+        pointer-events: none;
+      }
+
+     
+      /* SVG Icon styling */
+      .icon-arrow-up {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* Layout Spacing matching original design */
+      .section-padding {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+      }
+      
+      @media (min-width: 992px) {
+        .section-padding {
+          padding-top: 6rem;
+          padding-bottom: 6rem;
+        }
+      }
+    </style>
+    
+</script>
+</head>
+  <body>
+    <div id="header"></div>
+    <main style="max-width: 1600px; background-color: #ffffff;">
+        <section class="section-padding px-3 px-md-5">
+        <div class="row align-items-center gx-lg-5">
+          
+          <!-- Text Content -->
+          <div class="col-lg-5 mb-5 mb-lg-0 order-1 order-lg-1">
+             <div style="max-width: 580px; margin: 0 auto 0 0;">
+                <h1>關於我們</h1>
+                
+                <div class="content-text">
+                  <p>
+                    OIKOS 創立於 2008 年，起初僅是一間專注於手工木作的小型工作室。我們深信設計不應只是視覺的堆砌，而是對生活方式的深層思考。十多年來，我們始終秉持「回歸本質」的初衷，將自然的溫潤與光影的柔和，編織進每一件家具之中。
+                  </p>
+                  <p>
+                    歲月流轉，但我們對「家」的想像從未改變。我們不追逐短暫的流行，而是致力於創造出能經得起時間考驗的作品。這份堅持讓我們得以跨越地域，讓每一件家具都能成為空間中安靜而堅定的存在，陪伴無數家庭書寫屬於他們的溫柔故事。
+                  </p>
+                  <p>
+                    我們摒棄繁複的裝飾，專注於材質本身的語彙。從原木的紋理到織物的觸感，每一個細節都訴說著關於「陪伴」的意義。在這裡，家具不再是冰冷的物件，而是與您一同呼吸、承載生活記憶的溫柔夥伴。
+                  </p>
+                </div>
+             </div>
+          </div>
+
+          <!-- Spacer Column for visual gap -->
+          <div class="col-lg-1 order-2 d-none d-lg-block"></div>
+
+          <!-- Image Content -->
+          <div class="col-lg-6 order-2 order-lg-3">
+            <div class="img-wrapper">
+              <img src="../img/guzman-barquin-FkKClUPUURU-unsplash.jpg" alt="Warm wooden furniture living room">
+              <div class="img-overlay"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <div id="footer"></div>
+    </main>
+
+
+ <script src="/js/include.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

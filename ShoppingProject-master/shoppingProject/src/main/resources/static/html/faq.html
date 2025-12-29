@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常見問題 Q&A - OIKOS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/header_footer.css">
+
+    <link rel="stylesheet" href="/css/terms.css">
+
+    <link rel="icon" href="/img/logo.png" type="image/png">
+    
+    <style>
+        /* 為了配合原本的米色/白色風格，稍微調整 Accordion 的樣式 */
+        .accordion-button:not(.collapsed) {
+            color: #5c5c5c; /* 深灰色文字 */
+            background-color: #f8f9fa; /* 展開時的淺灰背景 */
+            box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+        }
+        .accordion-button:focus {
+            box-shadow: none; /* 移除藍色外框 */
+            border-color: rgba(0,0,0,.125);
+        }
+        .accordion-item {
+            border: none;
+            border-bottom: 1px solid #e0e0e0;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div id="header"></div> 
+
+    <main class="terms-wrapper">
+        <div class="terms-card">
+            <h2 class="terms-title">常見問題 Q&A</h2>
+            <p class="text-secondary mb-5 text-center">匯集了大家最常詢問的問題，希望能協助您更順利地使用 OIKOS 服務。</p>
+
+            <div class="accordion mb-5" id="faqAccordion">
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <strong>Q1. 如何註冊成為 OIKOS 會員？</strong>
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-secondary">
+                            點擊網站右上角的「註冊」按鈕，填寫您的電子信箱與設定密碼即可完成註冊。您也可以使用 Facebook 或 Google 帳號快速登入。註冊成為會員後，將享有專屬優惠與訂單查詢功能。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <strong>Q2. 忘記密碼該怎麼辦？</strong>
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-secondary">
+                            請在登入頁面點選「忘記密碼」，輸入您註冊時的電子信箱。系統將會寄送一封密碼重設信件給您，請依照信件中的連結指示重新設定新密碼即可。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <strong>Q3. 關於個人資料與隱私權保護？</strong>
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-secondary">
+                            我們非常重視您的隱私。OIKOS 遵循個人資料保護法，僅於提供服務所需範圍內收集與處理您的資料（如訂單配送、會員聯繫）。我們絕不會在未經您同意的情況下，將資料提供給無關的第三方。詳細內容請參考我們的「服務條款與隱私權政策」。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <strong>Q4. 如何修改訂單或退換貨？</strong>
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-secondary">
+                            若訂單尚未出貨，您可以至「會員中心 > 訂單查詢」取消訂單。若商品已收到但有瑕疵或不符，請於 7 日鑑賞期內透過客服信箱聯繫我們，我們將協助您辦理退換貨事宜。
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <section class="mt-5 p-4 bg-light rounded-3">
+                <h4 class="section-title mb-3"><i class="bi"></i> 找不到您要的答案嗎？</h4>
+                <p>
+                    若以上常見問題無法解決您的疑問，歡迎隨時聯繫我們，我們將竭誠為您服務。
+                </p>
+                <ul class="list-unstyled text-secondary">
+                    <li class="mb-2">客服信箱：<a href="mailto:service@oikos.tw" class="text-decoration-none text-primary">service@oikos.tw</a></li>
+                    <li class="mb-2">客服專線：0800-123-456</li>
+                    <li class="mb-2">服務時間：週一至週五 09:00 - 18:00</li>
+                </ul>
+            </section>
+
+            <div class="text-center mt-5">
+                <a href="/index.html" class="btn btn-primary px-4">回首頁</a>
+                <a href="/html/contact.html" class="btn btn-outline-secondary px-4 ms-2">聯絡我們</a>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/include.js"></script>
+</body>
+</html>

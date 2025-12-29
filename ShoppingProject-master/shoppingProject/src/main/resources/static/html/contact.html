@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退換貨政策 - OIKOS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/header_footer.css">
+
+    <link rel="stylesheet" href="/css/terms.css">
+
+    <link rel="icon" href="/img/logo.png" type="image/png">
+
+   <style>
+        /* 聯絡資訊小卡樣式 */
+        .contact-info-box {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            height: 100%;
+            transition: transform 0.2s;
+        }
+        .contact-info-box:hover {
+            transform: translateY(-5px); /* 滑鼠移過去微微上浮 */
+            background-color: #fff;
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.05);
+            border: 1px solid #eee;
+        }
+        .contact-icon {
+            font-size: 2rem;
+            color: #6c757d; /* 灰色主調，也可改為品牌色 */
+            margin-bottom: 1rem;
+        }
+        
+        /* 地圖區塊 */
+        .map-container {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div id="header"></div> 
+
+    <main class="terms-wrapper">
+        <div class="terms-card" style="max-width: 900px;"> <h2 class="terms-title">聯絡我們</h2>
+            <p class="text-secondary mb-5 text-center">
+                有任何問題或建議嗎？歡迎隨時與我們聯繫。<br>
+                我們將於服務時間內盡快回覆您。
+            </p>
+
+            <div class="row g-3 mb-5">
+                <div class="col-md-4">
+                    <div class="contact-info-box">
+                        <i class="bi bi-telephone contact-icon"></i>
+                        <h5 class="fw-bold">客服專線</h5>
+                        <p class="text-secondary small mb-0">0800-123-456</p>
+                        <p class="text-secondary small">週一至週五 09:00-18:00</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-info-box">
+                        <i class="bi bi-envelope contact-icon"></i>
+                        <h5 class="fw-bold">電子信箱</h5>
+                        <p class="text-secondary small mb-0">service@oikos.tw</p>
+                        <p class="text-secondary small">通常於 24 小時內回覆</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-info-box">
+                        <i class="bi bi-chat-dots contact-icon"></i>
+                        <h5 class="fw-bold">線上客服</h5>
+                        <p class="text-secondary small mb-0">LINE ID: @oikos_tw</p>
+                        <p class="text-secondary small">即時文字客服</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-5 text-secondary opacity-25">
+
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <h4 class="section-title text-start mb-4"><i class="bi bi-pencil-square"></i> 留言給我們</h4>
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <label for="contactName" class="form-label small text-secondary">姓名 Name</label>
+                            <input type="text" class="form-control" id="contactName" placeholder="請輸入您的姓名" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactEmail" class="form-label small text-secondary">電子信箱 Email</label>
+                            <input type="email" class="form-control" id="contactEmail" placeholder="example@email.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="orderNumber" class="form-label small text-secondary">訂單編號 (選填)</label>
+                            <input type="text" class="form-control" id="orderNumber" placeholder="若詢問訂單問題請填寫">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactSubject" class="form-label small text-secondary">主旨 Subject</label>
+                            <select class="form-select" id="contactSubject">
+                                <option selected>請選擇問題類型</option>
+                                <option value="product">商品諮詢</option>
+                                <option value="order">訂單進度查詢</option>
+                                <option value="return">退換貨申請</option>
+                                <option value="other">其他合作/建議</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactMessage" class="form-label small text-secondary">訊息內容 Message</label>
+                            <textarea class="form-control" id="contactMessage" rows="5" placeholder="請詳細描述您的問題..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 mt-2">發送訊息</button>
+                    </form>
+                </div>
+
+                <div class="col-lg-6">
+                    <h4 class="section-title text-start mb-4"><i class="bi bi-geo-alt"></i> 公司地址</h4>
+                    <p class="text-secondary mb-4">
+                        <strong>OIKOS 歐克斯生活選物</strong><br>
+                         台中市南屯區公益路一段 123 號  18樓<br>
+                        <span class="small text-muted">(此地址為辦公室，不對外開放參觀，退貨請勿直接寄至此處)</span>
+                    </p>
+                    
+                    <div class="map-container bg-light shadow-sm">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.9749162973976!2d121.5350!3d25.0350!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDAyJzA2LjAiTiAxMjHCsDMyJzA2LjAiRQ!5e0!3m2!1szh-TW!2stw!4v1620000000000!5m2!1szh-TW!2stw" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5 pt-3">
+                <a href="/index.html" class="btn btn-outline-secondary px-4">回首頁</a>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/include.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#contactForm').on('submit', function(e) {
+                e.preventDefault(); // 阻止表單真的跳轉
+                
+                // 模擬讀取
+                const btn = $(this).find('button[type="submit"]');
+                const originalText = btn.text();
+                btn.prop('disabled', true).text('傳送中...');
+
+                setTimeout(function() {
+                    alert('感謝您的來信！我們會盡快回覆您。');
+                    btn.prop('disabled', false).text(originalText);
+                    $('#contactForm')[0].reset(); // 清空表單
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>

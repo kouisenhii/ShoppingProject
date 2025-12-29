@@ -1,0 +1,1029 @@
+body {
+	/* 移除 margin/padding：確保所有元素都從版心準確開始排版。*/
+	font-family: "Noto Sans TC", sans-serif;
+	margin: 0px;
+	margin-top: 60px;
+	padding: 0;
+	/* background: linear-gradient(135deg, #faf7f4 0%, #fff 55%, #faf7f4 100%); */
+	background-color: #fff; 
+}
+
+/* 產品容器 */
+.product-container {
+	max-width: 1300px;
+	/* 設定整個容器的最大寬度（不會比螢幕更寬）。 */
+	margin: 70px auto;
+	padding: 0px 50px;
+}
+
+.product-container .row {
+	align-items: flex-start;
+}
+
+.product-image-gallery {
+	position: sticky;
+	top: 120px;
+	max-width: min(600px, 100%);
+	width: 100%;
+	align-self: flex-start; /* 確保 sticky 正常運作：讓高度以自身為準 */
+}
+
+.product-image-gallery img {
+	border: 1px solid #e5e5e5;
+	border-radius: 6px;
+}
+
+
+
+.productMainSwiper img {
+	width: 100%;
+	height: auto;
+	border-radius: 10px;
+	display: block;
+}
+
+.productThumbSwiper {
+	margin-top: 18px;
+}
+
+.productThumbSwiper .swiper-slide {
+	width: 20%;
+	max-width: 110px;
+	height: auto;
+	aspect-ratio: 1/1;
+	opacity: 0.5;
+	cursor: pointer;
+	border-radius: 2px;
+}
+
+.productThumbSwiper .swiper-slide-thumb-active {
+	opacity: 1;
+	border: 1.2px solid #c46a3a;
+	border-radius: 6px;
+}
+
+.productThumbSwiper img {
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+	object-fit: cover;
+}
+
+/* 覆蓋 Swiper 預設箭頭 */
+.productMainSwiper .swiper-button-prev,
+.productMainSwiper .swiper-button-next {
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 50%;
+    color: #fff;
+}
+
+/* 讓箭頭圖示變大 */
+.productMainSwiper .swiper-button-next::after,
+.productMainSwiper .swiper-button-prev::after {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* hover 效果 */
+.productMainSwiper .swiper-button-next:hover,
+.productMainSwiper .swiper-button-prev:hover {
+    background: rgba(0,0,0,0.4);
+}
+
+
+
+
+.product-info {
+	min-height: 600px;
+	padding: 50px 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 15px;
+}
+
+
+.product-name {
+	font-size: 2.5rem;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	color: #222;
+}
+
+.product-subtitle {
+	color: #7a7a7a;
+	font-size: 1rem;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 8px;
+}
+
+.product-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+.product-price {
+	/* 分隔線 */
+	font-size: 1.9rem;
+	color: #b85c38;
+	font-weight: 600;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.option-label, .product-quantity {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	color: #777;
+
+	/* 淺灰色 */
+}
+
+/* ---------------------------商品規格按鈕css------------------------------ */
+/* 整體排列 */
+.option-buttons {
+	display: flex;
+	flex-wrap: wrap; /* 允許換行 */
+	gap: 10px;
+	row-gap: 12px; /* 換行之間的縱向間距 */
+}
+
+/* 隱藏原生 radio 按鈕 */
+.option-buttons input[type="radio"] {
+	display: none;
+}
+
+/* 樣式化 label（讓它變成按鈕） */
+.option-buttons label {
+    padding: 12px 20px;
+    font-size: 1rem;
+    background: #f9f6f2;
+    border: 1px solid #e3ded8;
+    border-radius: 10px;
+    transition: .18s ease-in-out;
+}
+
+.option-buttons label:hover {
+    background: #eae5df;
+	cursor: pointer;
+}
+
+.option-buttons input:checked + label {
+    background: #c06242;
+    color: white;
+    border-color: #c06242;
+    box-shadow: 0 3px 8px rgba(193, 127, 89, .3);
+}
+
+
+/* --------------------------------------------------------- */
+select, input[type="number"] {
+	padding: 5px;
+	font-size: 1rem;
+	width: 100%;
+	/* 撐滿父容器寬度 */
+	max-width: 200px;
+	/* 限制最大寬度（避免太長） */
+	box-sizing: border-box;
+	/* 確保 padding 不影響總寬 */
+}
+
+/* 數量選擇器 + - */
+.quantity-wrapper {
+	margin-top: 5px;
+	display: inline-flex;
+	align-items: center;
+	border: 1px solid #f5f3f1;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.qty-btn {
+	background-color: #f5f3f1;
+	border: none;
+	padding: 6px 12px;
+	font-size: 1.1rem;
+	cursor: pointer;
+	transition: background-color 0.2s ease, color 0.2s ease;
+	color: #444;
+	font-weight: 600;
+}
+
+.qty-btn:hover {
+	background-color: #e6dfd8;
+	color: #000;
+}
+
+/* 數量輸入框 */
+#qty {
+	width: 50px;
+	text-align: center;
+	font-size: 1rem;
+	border: none;
+	outline: none;
+	padding: 6px 0;
+	background: transparent;
+	appearance: textfield;
+	/*  標準屬性 */
+	-webkit-appearance: none;
+	/* Chrome / Safari 相容 */
+	-moz-appearance: textfield;
+	/* Firefox 相容 */
+}
+
+/* 移除內外微調按鈕 */
+#qty::-webkit-inner-spin-button, #qty::-webkit-outer-spin-button {
+	appearance: none;
+	/* ✅ 標準屬性 */
+	-webkit-appearance: none;
+	/* 舊版相容 */
+	margin: 0;
+}
+
+.product-quantity-stock {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+
+.product-buttons {
+	display: flex;
+	gap: 15px;
+	margin-top: 10px;
+	justify-content: space-between;
+	width: 100%
+}
+
+#add-to-cart:disabled, .disabled-btn {
+	opacity: .4;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+/* 加入購物車動畫 */
+.cart-anim{
+    position: fixed;
+    top: 70px;
+    right: 30px;
+    background: #c06242;
+    color: white;
+    padding:10px 18px;
+    border-radius:5px;
+    font-size:17px;
+    opacity:0;
+    transform: translateY(-10px);
+    transition:.35s;
+    z-index:9999;
+}
+.cart-anim.show{
+    opacity:1;
+    transform:translateY(0);
+}
+.cart-anim.fail{
+    background:#ff4d4f;
+}
+
+/* */
+
+
+.my-btn {
+	flex: 1; /* 平均分配寬度 */
+	max-width: none;
+	padding: 12px 20px; /* 高度一致*/
+	border: none; /* 移除預設邊框 */
+	cursor: pointer;
+	border-radius: 6px;
+	font-size: 1rem;
+}
+
+/* "加入購物車"按鈕 */
+.add-cart {
+	background-color: #f0ebe4;
+	color: #444;
+}
+
+/* "立即購買"按鈕 */
+.buy-now {
+	background-color: #b85c38;
+	color: #fff;
+}
+
+.add-cart:hover {
+	background-color: #e5dccf;
+}
+
+.buy-now:hover {
+	background-color: #9f4a2f;
+}
+
+.stock {
+	color: #b85c38;
+	margin-top: 15px;
+}
+
+/* Tabs */
+.product-tabs {
+	width: 100%;
+	max-width: 1300px;
+	margin: 60px auto;
+	padding: 0px 40px;
+}
+
+.tab-header {
+	display: flex;
+	border-bottom: 1px solid #ddd;
+}
+
+.tab-btn {
+	flex: 1;
+	padding: 12px;
+	cursor: pointer;
+	border: none;
+	background: none;
+	font-size: 1rem;
+}
+
+.tab-btn.active {
+	color: #b85c38;
+	border-bottom: 2px solid #b85c38;
+	font-weight: bold;
+}
+
+.tab-content {
+	padding: 20px 0 40px;
+}
+
+.tab-pane {
+	display: none;
+}
+
+.tab-pane.active {
+	display: block;
+	line-height: 1.8;
+}
+
+#review-list .row {
+	padding-top: 14px;
+	padding-bottom: 14px;
+}
+
+.review-row {
+	display: flex;
+	justify-content: space-between;
+	min-height: 60px;
+	width: 100%;
+}
+
+/* -----------推薦列表--------- */
+
+/* 讓推薦區塊維持與主內容同寬居中 */
+.related-products {
+
+    margin: 0 80px auto;
+    position: relative;
+}
+
+.related-products .swiper {
+    width: 90%;
+    padding: 20px 0 40px;
+}
+
+.related-products .swiper-slide {
+    width: auto;
+	height: auto;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.related-products .swiper-slide:hover {
+    transform: translateY(-3px);
+}
+
+.related-products img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+}
+
+.related-products .description {
+	font-size: 12px;
+	font-weight: 500;
+    color: #626468;
+    padding: 8px;
+    height: 30px;
+    overflow: hidden;
+	
+}
+
+.name-price {
+    display: flex;
+	padding: 0 8px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.related-products .name {
+    font-size: 14px;
+	font-weight: 500;
+    overflow: hidden;
+}
+
+.related-products .price {
+    font-size: 15px;
+	font-weight: 450;
+    
+}
+
+/* 覆蓋 Swiper 預設箭頭 */
+.related-products .swiper-button-next,
+.related-products .swiper-button-prev {
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 50%;
+    color: #fff;
+}
+
+/* 讓箭頭圖示變大 */
+.related-products .swiper-button-next::after,
+.related-products .swiper-button-prev::after {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* hover 效果 */
+.related-products .swiper-button-next:hover,
+.related-products .swiper-button-prev:hover {
+    background: rgba(0,0,0,0.4);
+}
+
+/* ------------------------------ */
+
+
+/* 禁止箭頭被選取 */
+.related-products .swiper-button-next,
+.related-products .swiper-button-prev,
+.productMainSwiper .swiper-button-next,
+.productMainSwiper .swiper-button-prev {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.related-products .swiper-button-next:active,
+.related-products .swiper-button-prev:active {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================================
+   5. 麵包屑導覽 (Breadcrumb)
+   ========================================= */
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.breadcrumb-item a {
+    color: #8B5A2B; /* 主題棕色 */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.breadcrumb-item a:hover {
+    color: #ec7f13; /* 橘色 */
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: #6c757d; /* 灰色 (不可點) */
+}
+
+/* 分隔符號 (Bootstrap 預設是斜線，我們改用箭頭) */
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+    color: #ccc;
+    font-family: Arial, sans-serif;
+}
+
+/* =========================================
+   商品描述與規格表專用樣式 (Product Specs)
+   這段只會影響商品描述區塊，不會影響其他版面
+   ========================================= */
+
+/* 1. 調整文字區塊的閱讀舒適度 */
+#desc-list {
+    color: #555;            /* 文字改為深灰，比純黑更有質感 */
+    line-height: 1.9;       /* 行高加大，讓文字呼吸 */
+    letter-spacing: 0.5px;  /* 字距微調 */
+    margin-bottom: 40px;
+}
+
+/* 2. 表格容器：圓角與極簡外框 */
+#desc-list .table-responsive {
+    border-radius: 8px;         /* 讓表格四個角變圓 */
+    border: 1px solid #eee;     /* 外框改用極淺的灰色 */
+    overflow: hidden;           /* 確保內容不會凸出圓角 */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02); /* 極淡的陰影增加層次 */
+    background: #fff;
+    margin-top: 15px;
+}
+
+/* 3. 移除 Bootstrap 表格原本粗糙的線條 */
+#desc-list .table {
+    margin-bottom: 0;
+    border-color: #f5f5f5; /* 線條顏色變淡 */
+}
+
+/* 4. 表頭 (Header) 設計 */
+#desc-list .table thead th {
+    background-color: #faf8f6;  /* 極淡的暖米色，呼應你的棕色主題 */
+    color: #666;                /* 標題字色 */
+    font-weight: 600;           /* 字體加粗 */
+    font-size: 0.95rem;         /* 字體稍小一點點顯得精緻 */
+    padding: 18px 20px;         /* 寬鬆的內距 */
+    border-bottom: 1px solid #ebebeb;
+    border-top: none;           /* 移除頂部線條 */
+}
+
+/* 5. 內容 (Content) 設計 */
+#desc-list .table tbody td {
+    padding: 18px 20px;         /* 與表頭一致的寬鬆內距 */
+    color: #444;                /* 內容字色 */
+    font-size: 1rem;
+    vertical-align: middle;     /* 垂直置中 */
+    border-bottom: 1px solid #f9f9f9; /* 極細的分隔線 */
+}
+
+/* 6. 滑鼠懸浮特效 (Hover) */
+#desc-list .table-hover tbody tr:hover td {
+    background-color: #fffbf9;  /* 滑鼠移上去時顯示極淡的橘色背景 */
+    color: #222;
+}
+
+/* 7. 價格數字優化 */
+#desc-list .table .text-end span {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    /* 這裡不用設定顏色，因為 JS 裡已經有 inline style 設定了棕色 */
+}
+
+/* 8. 移除最後一行的底線 (讓表格收尾更乾淨) */
+#desc-list .table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================
+   自訂分頁樣式 (Pagination)
+   ========================================= */
+
+/* 1. 調整分頁容器 */
+.pagination {
+    gap: 6px; /* 讓按鈕之間有一點空隙，不會黏在一起 */
+    margin-top: 20px;
+}
+
+/* 2. 一般狀態的按鈕 */
+.page-link {
+    color: #666;                
+    background-color: #fff;     
+    border: 1px solid #e0e0e0;  
+    border-radius: 6px !important; 
+    padding: 8px 16px;        
+    font-weight: 500;
+    transition: all 0.2s ease-in-out; 
+}
+
+/* 3. 滑鼠滑過去 (Hover) */
+.page-link:hover {
+    color: #b85c38;             
+    background-color: #fff5f0;  
+    border-color: #b85c38;
+    z-index: 2;
+}
+
+/* 4. 目前選中的頁碼*/
+.page-item.active .page-link {
+    background-color: #b85c38;  
+    border-color: #b85c38;      
+    color: #fff;                
+    box-shadow: 0 4px 10px rgba(184, 92, 56, 0.3);
+}
+
+/* 5. 點擊時的聚焦光暈 (把 Bootstrap 預設的藍色光暈改掉) */
+.page-link:focus {
+    box-shadow: 0 0 0 0.25rem rgba(184, 92, 56, 0.2); 
+    color: #b85c38;
+}
+
+/* 6. 禁用狀態 (例如第一頁時的"上一頁") */
+.page-item.disabled .page-link {
+    color: #ccc;
+    background-color: #f9f9f9;
+    border-color: #eee;
+    opacity: 0.8;
+}
+
+
+
+.spec-section-title {
+    /* 1. 關鍵：加上左側 4px 的品牌棕色實線 */
+    border-left: 4px solid #b85c38 !important; 
+    
+    /* 2. 讓文字不要黏在線上，留一點距離 */
+    padding-left: 1rem !important;
+    
+    /* 3. 其他文字美化 */
+    font-weight: 700;       /* 粗體 */
+    color: #333;            /* 深灰色字 */
+    margin-bottom: 1rem;    /* 下方留白 */
+    letter-spacing: 1px;    /* 字距微調 */
+    line-height: 1.2;       /* 行高設定，確保線條長度剛好 */
+    display: block;         /* 確保它是區塊元素 */
+}
+
+/* 1. 移除外框與圓角，改為全透明 */
+.spec-container {
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    margin-bottom: 2rem;
+}
+
+/* 2. 隱藏表頭 (Header) - 讓介面更像雜誌 */
+.spec-header-row {
+    display: flex;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.spec-header-text {
+    color: #888;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* 3. 每一行的樣式：只留底線，增加呼吸空間 */
+.spec-body-row {
+    background-color: transparent;
+    border-bottom: 1px solid #eee;
+    padding: 24px 0;
+    margin: 0;
+    transition: opacity 0.3s;
+}
+
+/* 移除最後一行的底線 */
+.spec-body-row:last-child {
+    border-bottom: none;
+}
+
+/* 4. 文字排版優化 */
+.spec-label {
+    font-size: 1rem;
+    color: #222;       /* 深黑 */
+    font-weight: 500;  /* 不要太粗，中等就好 */
+    letter-spacing: 0.5px;
+}
+
+.spec-desc {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.spec-price, .review-rating-number {
+    font-size: 1.1rem;
+    color: #b85c38;
+    font-weight: 500;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.review-header-row{
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* 評價 */
+.review-index {
+    color: #ccc;
+    font-size: 0.9rem;
+    font-family: 'Courier New', monospace; /* 工業風字體 */
+}
+
+
+   /* 評價區數字樣式 */
+.review-rating-number {
+    margin-left: 0.25rem;
+    font-weight: 500;
+    color: #212529; 
+}
+
+
+
+
+/* 1. 運送方式卡片 */
+.shipping-card {
+    background-color: #fff;
+    border: 1px solid #efece8;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.2s ease;
+    height: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.shipping-card:hover {
+    border-color: #b85c38; 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(184, 92, 56, 0.1);
+}
+
+.shipping-title {
+    font-weight: 700;
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.shipping-desc {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.shipping-price {
+    color: #b85c38; 
+    font-weight: 700;
+    font-size: 1.25rem;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* 2. 付款方式列表 */
+.payment-list-container {
+    background-color: #fcfbf9; 
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    border: 1px solid #efece8;
+}
+
+.payment-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.payment-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.payment-label {
+    font-weight: 700;
+    color: #333;
+    min-width: 100px;
+}
+
+/* 信用卡圖示模擬 (用 CSS 畫簡單的 badge) */
+.card-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-right: 5px;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+.bg-visa { background: #1a1f71; }
+.bg-master { background: #eb001b; }
+.bg-jcb { background: #0f4471; }
+
+
+
+/* =========================================
+   骨架屏動畫 (Skeleton Loading)
+   ========================================= */
+
+/* 定義閃爍動畫 (淺灰 -> 深灰 -> 淺灰) */
+@keyframes skeleton-pulse {
+    0% { background-color: #f0f0f0; }
+    50% { background-color: #e0e0e0; }
+    100% { background-color: #f0f0f0; }
+}
+
+/* 通用骨架樣式 */
+.skeleton {
+    animation: skeleton-pulse 1.5s infinite ease-in-out; /* 1.5秒循環一次 */
+    color: transparent !important;       /* 隱藏裡面的文字 */
+    background-color: #f0f0f0;           /* 預設背景 */
+    border-radius: 6px;                  /* 圓角比較好看 */
+    user-select: none;                   /* 禁止選取 */
+    pointer-events: none;                /* 禁止點擊 */
+}
+
+/* 針對不同元件的骨架尺寸設定 */
+.product-title.skeleton {
+    width: 80%;       /* 標題大概佔寬度 80% */
+    height: 2.5rem;   /* 高度配合字體 */
+    margin-bottom: 1rem;
+}
+
+.product-subtitle.skeleton {
+    width: 60%;
+    height: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.product-price.skeleton {
+    width: 40%;
+    height: 2rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* 圖片骨架 (預設高度，避免版面塌陷) */
+.skeleton-img-placeholder {
+    width: 100%;
+    height: 450px; /* 電腦版高度，手機版可用 media query 調整 */
+    border-radius: 10px;
+}
+
+/* --- Product.css 新增 --- */
+
+/* 確保 Swiper Slide 是定位基準點 */
+.productMainSwiper .swiper-slide, 
+.productThumbSwiper .swiper-slide {
+    position: relative; 
+}
+
+/* 圓形已售完遮罩 */
+.sold-out-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 絕對置中 */
+    width: 120px;   /* 圓形大小，可自行調整 */
+    height: 120px;
+    background-color: rgba(0, 0, 0, 0.6); /* 半透明黑底 */
+    color: #fff;
+    border-radius: 50%; /* 變成圓形 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 10;
+    pointer-events: none; /* 讓點擊穿透，不會擋住圖片拖曳 */
+}
+
+/* 縮圖的遮罩要小一點 */
+.productThumbSwiper .sold-out-overlay {
+    width: 40px;
+    height: 40px;
+    font-size: 0.6rem;
+}
+
+/* 已售完按鈕樣式 */
+.disabled-btn-sold-out {
+    background-color: #ccc !important;
+    color: #666 !important;
+    cursor: not-allowed !important;
+    border: 1px solid #999 !important;
+}
+
+
+/* 平板模式（768px～1024px）：用「手機」的排版邏輯 */
+@media (min-width: 768px) and (max-width: 1199px) {
+
+	.product-container .row {
+        flex-direction: column;
+        align-items: center; /* 讓所有 child 置中 */
+    }
+
+    /* 圖片區不要 sticky，不然高度不夠會破版 */
+    .product-image-gallery {
+        position: static !important;
+        margin: 0 auto 24px;
+		margin-top: 50px;
+        width: 100%;
+		max-width: 700px;
+		text-align: center;
+    }
+
+    /* 讓圖區不要靠左，吃滿容器 */
+    .product-image-gallery .swiper,
+    .product-image-gallery img {
+        width: 100%;
+    }
+
+    /* 右側資訊區下移，避免與圖撞在一起 */
+    .product-info {
+        margin-top: 10px;
+        padding-left: 0;
+		padding-right: 0;
+		width: 100%;
+		max-width: 1000px;
+    }
+}
+
+
+
+/* 手機 */
+@media ( max-width : 767.98px) {
+	.product-container {
+		padding: 0 16px;
+	}
+	body {
+		padding-bottom: 80px;
+	}
+	
+	.option-buttons label {
+		font-size: 0.9rem;
+		padding: 10px;
+	}
+
+	.product-image-gallery {
+        position: static !important;
+        margin: 50 auto 24px;
+        width: 100%;
+		max-width: 700px;
+		text-align: center;
+    }
+
+	.product-tabs {
+        padding: 0 16px; /* 跟主容器對齊 */
+        margin: 30px auto;
+        width: 100%;
+    }
+
+    .related-products {
+        margin: 0;
+        width: 100%;
+        padding: 0 16px;
+    }
+
+	/* 讓 Swiper 輪播區塊寬度 100% */
+    .related-products .swiper {
+        width: 100%;
+        padding: 10px 0 30px;
+    }
+
+	.spec-header-row {
+		display: none; /* 手機預設隱藏 */
+    }
+
+	.skeleton-img-placeholder {
+        height: 350px;
+    }
+
+    
+	
+
+	/* ====== iOS Safari 取消 Button 點擊藍色 ====== */
+
+	/* 1) 移除 iOS 對 button 自動套藍色 default style */
+	.tab-btn {
+		-webkit-appearance: none !important;
+		appearance: none !important;
+		border: none !important;
+		background: none !important;
+	}
+
+	/* 2) 移除 iOS active highlight = 你看到的藍色來源 */
+	.tab-btn:active, .tab-btn:focus {
+		-webkit-tap-highlight-color: transparent !important;
+		-webkit-focus-ring-color: rgba(0, 0, 0, 0) !important;
+		outline: none !important;
+	}
+
+	/* 3) 重新指定 active tab 樣式 (避免消失) */
+	.tab-btn.active {
+		color: #b85c38 !important;
+		font-weight: bold;
+		border-bottom: 2px solid #b85c38 !important;
+	}
+
+	/* 4) 移除 iOS "visited link 變藍"（若曾被當超連結渲染） */
+	.tab-btn, .tab-btn:visited {
+		color: black !important;
+	}
+}

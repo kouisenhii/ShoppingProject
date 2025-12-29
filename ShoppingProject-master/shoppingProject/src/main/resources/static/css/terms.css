@@ -1,0 +1,101 @@
+/* === 服務條款與隱私權政策頁面專用樣式 (OIKOS 風格) === */
+
+/* 1. 基礎背景設定 (與 Register 一致) */
+body {
+    background-color: #E5E1DA;
+    font-family: 'Noto Sans TC', sans-serif;
+    color: #333;
+}
+
+/* 2. 主容器佈局 */
+.terms-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start; /* 條款內容較長，建議置頂對齊而非垂直置中 */
+    justify-content: center;
+    
+    /* 避開 Header */
+    padding-top: 120px; 
+    padding-bottom: 80px;
+}
+
+/* 3. 卡片樣式 */
+.terms-card {
+    background: #ffffff;
+    border-radius: 12px;
+    /* 與 Register 一致的陰影 */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0,0,0,0.02);
+    
+    padding: 3rem 2.5rem;
+    
+    /* 條款內容較多，寬度設定比註冊框寬，方便閱讀 */
+    max-width: 850px; 
+    width: 90%;
+    line-height: 1.8;
+}
+
+/* 4. 標題與文字 */
+.terms-title {
+    font-weight: 700;
+    font-size: 1.75rem;
+    text-align: center;
+    color: #1f2937; /* 深灰色 */
+    margin-bottom: 1.5rem;
+}
+
+.section-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #1f2937; /* 改為深灰色，不使用原本的藍色 */
+    margin-bottom: 0.8rem;
+    margin-top: 1.5rem;
+    border-bottom: 2px solid #E5E1DA; /* 增加底部裝飾線 */
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+/* 5. 連結樣式 */
+a {
+    color: #1f2937;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+a:hover {
+    color: #4b5563;
+}
+
+/* 6. 按鈕樣式 (改為深色風格) */
+.btn-primary {
+    background-color: #1f2937;
+    border-color: #1f2937;
+    border-radius: 8px; /* 圓角與 Register 一致 */
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.7rem 2rem;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #374151;
+    border-color: #374151;
+}
+
+/* 移除原本的背景圖 class，避免干擾 */
+.terms-bg {
+    display: none;
+}
+
+/* RWD */
+@media (max-width: 768px) {
+    .terms-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .terms-title {
+        font-size: 1.5rem;
+    }
+}
