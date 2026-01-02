@@ -184,6 +184,6 @@ cd shoppingProject
 * **[Sulayee](https://github.com/Sulayee)**         - 產品列表頁開發、搜尋功能引擎設計、前後端整合、交易鎖 (Transaction Lock) 機制設計
 * **[smallke0207](https://github.com/smallke0207)** - 用戶認證系統 (登入/註冊/OAuth)、第三方登入串接、系統資安設定與資料加密
 * **[XuYo1014](https://github.com/XuYo1014)**       - 產品詳情頁開發、庫存管理系統邏輯設計 (Inventory Management)、商品狀態維護
-* **[kouisenhii](https://github.com/kouisenhii)**   - 會員中心前後端開發、安全機制設計、收藏清單功能 (Wishlist)[Kouisen的技術專欄].(https://medium.com/@kouisengetnews)
+* **[kouisenhii](https://github.com/kouisenhii)**   - 會員中心前後端開發、安全機制設計、收藏清單功能 (Wishlist)**[Kouisen的技術專欄](https://medium.com/@kouisengetnews)**
 ***
 ⚠️ 安全性說明 (Security Notice) 本專案已開啟 GitHub Push Protection。為了確保開發環境安全，所有敏感金鑰（Secrets）均已從 Git 歷史紀錄中移除，並改以環境變數管理。若您需於本地運行測試，請參考 application.properties.example 進行配置
